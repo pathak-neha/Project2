@@ -17,7 +17,7 @@ module.exports = function(app) {
   });
   // index route loads index.html
   
-  app.get('/index', function(req, res) {
+  app.get('*', function(req, res) {
     
     res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
   });
@@ -28,7 +28,12 @@ module.exports = function(app) {
   });
 
   // lost route loads lost.html
-  app.get('/lost', function(req, res) {
+  app.get('/index', function(req, res) {
+    res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
+  });
+
+  // Default route 
+  app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
   });
 
