@@ -44,10 +44,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
        allowNull: false,
      },
-     color:{
-      type: DataTypes.STRING,
-       allowNull: false,
-     },
      attribute1:{
       type: DataTypes.STRING,
        allowNull: true,
