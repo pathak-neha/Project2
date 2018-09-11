@@ -1,3 +1,5 @@
+// Connects to the Form for the lost item (Using categories table)
+
 var subcategory = {
     Mobile: ['Apple','Samsung','HTC'],
     Clothes: ['Shirt','Pant','T-shirt'],

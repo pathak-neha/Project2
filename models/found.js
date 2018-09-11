@@ -1,33 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var LostAndFound = sequelize.define('LostAndFound', {
-    firstname: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [3, 15]
-      }
-    },
-    lastname: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      validate: {
-        len: [3, 15]
-      }
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true
-      }
-    },
-    phone: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        isNumeric: true
-      }
-    },
     category: {
       type: DataTypes.STRING,
       allowNull: false

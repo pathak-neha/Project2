@@ -8,7 +8,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/api/userss/:id', function(req, res) {
+  app.get('/api/users/:id', function(req, res) {
     // 2; Add a join to include all of the Users's Items here
     db.User.findOne({ include: [ db.LostAndFound ]},{
       where: {
