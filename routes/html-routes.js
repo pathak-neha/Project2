@@ -38,8 +38,9 @@ module.exports = function(app) {
   app.get('/browse-items', function(req, res) {
     res.sendFile(path.join(__dirname, '../public/frontend/browse.html'));
   });
-   // signIn route loads SignIn.html
-   app.get('/signIn', function(req, res) {
+  
+  // signIn route loads SignIn.html
+  app.get('/signIn', function(req, res) {
     res.sendFile(path.join(__dirname, '../public/frontend/SignIn.html'));
   });
 
