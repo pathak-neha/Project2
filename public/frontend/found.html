@@ -2,214 +2,186 @@
 <html lang='en'>
 
 <head>
-	<meta charset='UTF-8'>
-	<title>FOUND ITEM REPORT</title>
-	<!-- Latest compiled and minified CSS & JS -->
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/lumen/bootstrap.min.css'/>
-	<!-- <link rel='stylesheet' href='styles.css' media='screen' title='no title'> -->
+  <meta charset='UTF-8'>
+  <title>FOUND ITEM REPORT</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/img/lost-and-found-favicon.png">
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/lumen/bootstrap.min.css' />
+  <link rel='stylesheet' href='../assets/css/styles.css' media='screen' title='no title'>
   <script src='https://code.jquery.com/jquery.js'></script>
   <script src='../assets/js/found.js'></script>
   <script src='../assets/js/lostTable.js'></script>
-	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
 </head>
 
 <body>
   <!-- ////////////////////////HEADER////////////////////////////////// -->
-  <div class='card text-center'>
-      <div class='card-header'>
-          <ul class='nav nav-tabs card-header-tabs'>
-              <li class='nav-item'>
-                  <a class='nav-link ' href='index'>Home</a>
-              </li>
-              <li class='nav-item'>
-                  <a class='nav-link ' href='SignIn'>Sign In</a>
-              </li>
-              <li class='nav-item'>
-                  <a class='nav-link' href='SignUp'>Sign Up</a>
-              </li>
-
-              <li class='nav-item'>
-                  <a class='nav-link' href='lost'>Report Lost Item</a>
-              </li>
-              <li class='nav-item'>
-                  <a class='nav-link active' href='found'>Report Found Item</a>
-              </li>
-              <li class='nav-item'>
-                <a class='nav-link' href='browse-items'>Browse Lost and Found Items</a>
-            </li>
-          </ul>
-      </div>
-  <!-- /////////////////////////////////////////////////////////////// -->
-  <div class='container'>
-        <hr>
-        <br>
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-<div class='container text-center'>
-    <h2>ADD FOUND ITEM</h2>
-    <hr>
-</div>
-<form >
-<!-- ////////////////////////////First and last name and Email Address///////////////////////////////////////// -->
-            <div class='input-group'>
-                    <div class='input-group-prepend'>
-                      <span class='input-group-text' id=''>First and last name</span>
-                    </div>
-                    <input type='text' class='form-control'>
-                    <input type='text' class='form-control'><br><br>
-</div>
-<br>
-<div class='input-group'>
-                    <span for='exampleFormControlInput1' class='input-group-text' id=''>Email address</span>
-                    <input type='email' class='form-control' id='exampleFormControlInput1' placeholder='name@example.com'>
-
-                    <span for='exampleFormControlInput2' class='input-group-text' id=''>Phone Number</span>
-                    <input type='tel' class='form-control' id='exampleFormControlInput2' placeholder='647-555-6677'>
-
-                    
-                  </div>
-                 
-
-<!-- //////////////////////////////////////////////////////////////////////////// -->
-<hr>
-
-<!-- ///////////////////////////////Item Category///////////////////////////////////////////// -->
-<div class='input-group mb-3'>
-        <div class='input-group-prepend'>
-          <label class='input-group-text' for='inputGroupSelect01'>Item Category</label>
-        </div>
-        <select class='custom-select' id='category' size='1' onchange='makeSubmenu(this.value)'>
-            <option value='' disabled selected>Choose Category</option>
-            <option >Mobile</option>
-            <option >Clothes</option>
-            <option >Case</option>
-            <option >Laptop</option>
-            <option >Jewelery</option>
-            </select>
+  <div class='card text-center text-white bg-success'>
+    <div class='card-header'>
 
 
-            <select class='custom-select' id='categorySelect' size='1' >
-                <option value='' disabled selected>Choose Subcategory</option>
-                <option></option>
-                </select>
-
-
-       
-</div>
-
-
-<!-- ///////////////////////////////Size///////////////////////////////////////////// -->
-<div class='input-group mb-3'>
-        <div class='input-group-prepend'>
-          <label class='input-group-text' for='inputGroupSelect01'>Size</label>
-        </div>
-        <select class='custom-select' id='inputGroupSelect01'>
-          <option selected>Choose...</option>
-          <option value='1'>One</option>
-          <option value='2'>Two</option>
-          <option value='3'>Three</option>
-        </select>
-</div>
-
-<!-- ///////////////////////////////Color///////////////////////////////////////////// -->
-<div class='input-group mb-3'>
-        <div class='input-group-prepend'>
-          <label class='input-group-text' for='inputGroupSelect01'>Color</label>
-        </div>
-        <select class='custom-select' id='inputGroupSelect01'>
-          <option selected>Choose...</option>
-          <option value='1'>One</option>
-          <option value='2'>Two</option>
-          <option value='3'>Three</option>
-        </select>
-</div>
-
-
-
-<!-- //////////////////////////////////Check box/////////////////////////////////////////////////// -->
-<div class='container' >
-<h2 class='input-group-text'>Attributes</h2>
-<p >Enter more attributes to help us make best match with our lost items database</p>
-
-  <div class='checkbox-inline'>
-    <label><input type='checkbox' value=''>Option 1</label>
-    <label><input type='checkbox' value=''>Option 2</label>
-    <label><input type='checkbox' value=''>Option 3</label>
-    <label><input type='checkbox' value=''>Option 4</label>
-    <label><input type='checkbox' value=''>Option 5</label>
-    <label><input type='checkbox' value=''>Option 6</label>
-  </div>
-  <div class='checkbox-inline'>
-    <label><input type='checkbox' value=''>Option 7</label>
-    <label><input type='checkbox' value=''>Option 8</label>
-    <label><input type='checkbox' value=''>Option 9</label>
-    <label><input type='checkbox' value=''>Option 10</label>
-    <label><input type='checkbox' value=''>Option 11</label>
-    <label><input type='checkbox' value=''>Option 12</label>
-
-  </div>
- 
-
-</div>  
-      
-      
-     
-      <hr>
-
-      <!-- //////////////////////////////////////////////////////////////////////////////// -->
-      <div class='input-group mb-3'>
-            <div class='input-group-prepend'>
-              <span class='input-group-text'>Found Item Photo</span>
-            </div>
-            <div class='custom-file'>
-              <input type='file' class='custom-file-input' id='inputGroupFile01'>
-              <label class='custom-file-label' for='inputGroupFile01'>Choose file</label>
-            </div>
-          </div>
-          
-        
-          <!-- //////////////////////////////////////////////////////////////////////////////////// -->
-          <div class='form-group'>
-                <label for='exampleFormControlTextarea1'>Found Location</label>
-                <textarea class='form-control' id='exampleFormControlTextarea1' rows='1' placeholder='ZIP code or Address'></textarea>
-              </div>
-          <!-- //////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- //////////////////////////////////////////////////////////////////////////////////// -->
-<div class='form-group'>
-        <label for='exampleFormControlTextarea1'>Item Description</label>
-        <textarea class='form-control' id='exampleFormControlTextarea1' rows='1' placeholder='Wallet including IDs, Debit and Credit Cards'></textarea>
-      </div>
-          <!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-	</div>
-
-
-<div class='container'>
-    <button type='button' class='btn btn-primary btn-lg btn-block'>SUBMIT</button>
-</div>
-</form>
-<br>
-</div>
-<!-- ///////////////////////////////FOOTER///////////////////////////////////////////////// -->
-<!-- Footer -->
-<footer class='page-footer font-small blue pt-4' style='text-align: center'>
-  
-    <div class='container-fluid text-center'>
-      
-            <ul class='list-inline'>
-              <li class='list-inline-item'><a href='index' >Home</a></li> 
-              <li class='list-inline-item'><a href='lost'>Lost Report</a></li>
-                <li class='list-inline-item'><a href='found'>Found Report</a></li>
-             </ul>
-
+      <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class='navbar-nav mr-auto nav nav-tabs collapse navbar-collapse card-header-tabs'>
+                    <li class='nav-item'>
+          <a class='nav-link ' href='index'>Home</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link ' href='SignIn'>Sign In</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link' href='SignUp'>Sign Up</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link' href='lost'>Report Lost Item</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link active' href='found'>Report Found Item</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link' href='browse-items'>Browse Lost and Found Items</a>
+        </li>
+      </ul>
+      <br>
+      <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+</nav>
     </div>
-   
+    <!-- /////////////////////////////////////////////////////////////// -->
+    <div class='container'>
+      <hr>
+      <br>
+      <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+      <div class='container text-center'>
+        <h2>ADD FOUND ITEM</h2>
+        <hr>
+      </div>
+      <form>
+        <!-- ////////////////////////////First and last name and Email Address///////////////////////////////////////// -->
+        <div class='input-group'>
+          <div class='input-group-prepend'>
+            <span class='input-group-text' id=''>First Name</span>
+          </div>
+          <input type='text' class='form-control'>
+          <br><br>
+          <div class='input-group-prepend'>
+            <span class='input-group-text' id=''>Last Name</span>
+          </div>
+          <input type='text' class='form-control'>
+          <br><br>
+        </div>
+        <br>
+        <div class='input-group'>
+          <span for='exampleFormControlInput1' class='input-group-text' id=''>Email address</span>
+          <input type='email' class='form-control' id='exampleFormControlInput1' placeholder='name@example.com'>
+
+          <span for='exampleFormControlInput2' class='input-group-text' id=''>Phone Number</span>
+          <input type='tel' class='form-control' id='exampleFormControlInput2' placeholder='647-555-6677'>
+        </div>
+        <hr>
+        <!-- ///////////////////////////////Item Category///////////////////////////////////////////// -->
+        <div class='input-group mb-3'>
+          <div class='input-group-prepend'>
+            <label class='input-group-text' for='inputGroupSelect01'>Item Category</label>
+          </div>
+          <select class='custom-select' id='category' size='1' onchange='makeSubmenu(this.value)'>
+            <option value='' disabled selected>Choose Category</option>
+            <option>Electronics</option>
+            <option>Wallet</option>
+            <option>Clothing</option>
+            <option>Accessories</option>
+            <option>Documents</option>
+            <option>Other</option>
+          </select>
+
+          <select class='custom-select' id='categorySelect' size='1'>
+            <option value='' disabled selected>Choose Subcategory</option>
+            <option></option>
+          </select>
+        </div>
+        <!-- ///////////////////////////////Size///////////////////////////////////////////// -->
+        <div class='input-group mb-3'>
+          <div class='input-group-prepend'>
+            <label class='input-group-text' for='inputGroupSelect01'>Size</label>
+          </div>
+          <select class='custom-select' id='inputGroupSelect01'>
+            <option selected>Choose...</option>
+            <option value='1'>Small (30cm and under)</option>
+            <option value='2'>Medium (Larger than 30cm)</option>
+            <option value='3'>Large (Larger than 60cm)</option>
+          </select>
+        </div>
+        <!-- ///////////////////////////////Color///////////////////////////////////////////// -->
+        <div class='input-group mb-3'>
+          <div class='input-group-prepend'>
+            <label class='input-group-text' for='inputGroupSelect01'>Color</label>
+          </div>
+          <select class='custom-select' id='inputGroupSelect01'>
+            <option selected>Choose...</option>
+            <option value='1'>Red</option>
+            <option value='2'>Blue</option>
+            <option value='3'>Green</option>
+            <option value='1'>Yellow</option>
+            <option value='2'>Orange</option>
+            <option value='3'>Purple</option>
+            <option value='1'>White</option>
+            <option value='2'>Black</option>
+            <option value='3'>Grey</option>
+            <option value='2'>Pink</option>
+            <option value='3'>Brown</option>
+            <option value='1'>Mix of many colors</option>
+          </select>
+        </div>
+        <!-- //////////////////////////////////////////////////////////////////////////////// -->
+        <div class='input-group mb-3'>
+          <div class='input-group-prepend'>
+            <span class='input-group-text'>Found Item Photo</span>
+          </div>
+          <div class='custom-file'>
+            <input type='file' class='custom-file-input' id='inputGroupFile01'>
+            <label class='custom-file-label' for='inputGroupFile01'>Choose file</label>
+          </div>
+        </div>
+        <!-- //////////////////////////////////////////////////////////////////////////////////// -->
+        <div class='form-group'>
+          <label for='exampleFormControlTextarea1'>Found Location</label>
+          <textarea class='form-control' id='exampleFormControlTextarea1' rows='1' placeholder='ZIP code or Address'></textarea>
+        </div>
+        <!-- //////////////////////////////////////////////////////////////////////////////////// -->
+        <div class='form-group'>
+          <label for='exampleFormControlTextarea1'>Item Description</label>
+          <textarea class='form-control' id='exampleFormControlTextarea1' rows='1' placeholder='Wallet including IDs, Debit and Credit Cards'></textarea>
+        </div>
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
+    </div>
+    <div class='container'>
+      <button type='button' class='btn btn-primary btn-lg btn-block'>SUBMIT</button>
+    </div>
+    </form>
+    <br>
+  </div>
+  <!-- ///////////////////////////////FOOTER///////////////////////////////////////////////// -->
+  <footer class='page-footer font-small blue pt-4' style='text-align: center'>
+    <div class='container-fluid text-center'>
+      <ul class='list-inline'>
+        <li class='list-inline-item'><a href='index'>Home</a></li>
+        <li class='list-inline-item'><a href='lost'>Lost Report</a></li>
+        <li class='list-inline-item'><a href='found'>Found Report</a></li>
+      </ul>
+    </div>
+
     <div class='footer-copyright text-center py-3'>© 2018 Copyright:
       <a href='#'> Lost and Found</a>
     </div>
-    
   </footer>
-  
-<!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
 </body>
 
 </html>
