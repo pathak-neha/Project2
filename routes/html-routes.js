@@ -17,7 +17,7 @@ module.exports = function(app) {
   });
   // index route loads index.html
   
-  app.get('/index', function(req, res) {
+  app.get('/*', function(req, res) {
     
     res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
   });
