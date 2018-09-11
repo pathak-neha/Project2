@@ -1,6 +1,6 @@
 var subcategory = {
-    Mobile: ['Apple','Samsung','HTC'],
-    Clothes: ['Shirt','Pant','T-shirt'],
+    Electronics: ['Mobile(apple)','Mobile(android)','laptop','tablet','earbuds/ headphones','watch','computer accessories'],
+    Wallet: ['Wallet only','WallerPant','T-shirt'],
     Case:['Wallet','Purse','Bagpack'],
     Laptop:['Dell','Acer','Mac','Asus'],
     Jewelery:['Earing','Bracelet','Watches']
