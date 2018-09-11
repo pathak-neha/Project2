@@ -1,9 +1,12 @@
+// Connects to the Form for the found item (Using categories table)
+
 var subcategory = {
-    Mobile: ['Apple','Samsung','HTC'],
-    Clothes: ['Shirt','Pant','T-shirt'],
-    Case:['Wallet','Purse','Bagpack'],
-    Laptop:['Dell','Acer','Mac','Asus'],
-    Jewelery:['Earing','Bracelet','Watches']
+    Electronics: ['Mobile(apple)','Mobile(android)','laptop','tablet','earbuds/ headphones','computer accessories'],
+    Wallet: ['Wallet only','Wallet with IDs','IDs only'],
+    Clothing:['Shirt','Jacket','Pants','Skirt'],
+    Accessories:['Shoes','Hat','Scarf','Mittens/ Gloves','Jewellery/ Watches','Bag/ Purse/ Case'],
+    Documents:['Book','Notes'],
+    Other:["Must be clarified in item description section"]
     };
 
     function makeSubmenu(value) {
