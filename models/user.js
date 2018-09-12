@@ -1,7 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define('User', {
-    // Giving the Author model a name of type STRING
-    // name: DataTypes.STRING
     firstname: {
       type: DataTypes.STRING,
       notEmpty: true,
@@ -16,20 +14,20 @@ module.exports = function (sequelize, DataTypes) {
         len: [3, 15]
       }
     },
-    username: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      validate: {
-        len: [3, 15]
-      }
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [5, 15]
-      }
-    },
+    // username: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: false,
+    //   validate: {
+    //     len: [3, 15]
+    //   }
+    // },
+    // password: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   validate: {
+    //     len: [5, 15]
+    //   }
+    // },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -43,9 +41,8 @@ module.exports = function (sequelize, DataTypes) {
     // },
     // status: {
     //   type: sequelize.ENUM('active','inactive'),
-    //   defaultValue:'active' 
+    //   defaultValue:'active'
     // }
-
   });
 
   User.associate = function (models) {
