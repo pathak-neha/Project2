@@ -35,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [3, 400]
       }
-    }
+    },
     claimed: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

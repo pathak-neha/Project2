@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   var Lost = sequelize.define('Lost', {
     email: {
       type: DataTypes.STRING,
@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     size: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     color: {
       type: DataTypes.STRING,
@@ -40,7 +40,7 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  Lost.associate = function (models) {
+  Lost.associate = function(models) {
     Lost.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
