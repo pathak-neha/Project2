@@ -4,9 +4,10 @@
 <head>
     <meta charset='UTF-8'>
     <title>LOST & FOUND</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/img/lost-and-found-favicon.png">
     <!-- Latest compiled and minified CSS & JS -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/lumen/bootstrap.min.css' />
-    <!-- <link rel='stylesheet' href='styles.css' media='screen' title='no title'> -->
+    <link rel='stylesheet' href='../assets/css/styles.css' media='screen' title='no title'>
     <script src='https://code.jquery.com/jquery.js'></script>
     <script src='../assets/js/found.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
@@ -14,29 +15,48 @@
 
 <body>
     <!-- ///////////////////////////////HEADER//////////////////////////////////////////////////// -->
-    <div class='card text-center'>
+    <div class='card text-center bg-info'>
         <div class='card-header'>
-            <ul class='nav nav-tabs card-header-tabs'>
-                <li class='nav-item'>
-                    <a class='nav-link' href='index'>Home</a>
-                </li>
-                <li class='nav-item'>
-                    <a class='nav-link active' href='SignIn'>Sign In</a>
-                </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href='SignUp'>Sign Up</a>
-                </li>
+            <!-- ////////////////////////////////////////////////// -->
 
-                <li class='nav-item'>
-                    <a class='nav-link' href='lost'>Report Lost Item</a>
-                </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href='found'>Report Found Item</a>
-                </li>
-            </ul>
+            <!-- ////////////////////////////////////////////////// -->
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class='navbar-nav mr-auto nav nav-tabs collapse navbar-collapse card-header-tabs'>
+                        
+                            <li class='nav-item'>
+                                <a class='nav-link' href='index'>Home</a>
+                            </li>
+                            <li class='nav-item'>
+                                <a class='nav-link active' href='SignIn'>Sign In</a>
+                            </li>
+                            <li class='nav-item'>
+                                <a class='nav-link' href='SignUp'>Sign Up</a>
+                            </li>
+                            <li class='nav-item'>
+                                <a class='nav-link' href='lost'>Report Lost Item</a>
+                            </li>
+                            <li class='nav-item'>
+                                <a class='nav-link' href='found'>Report Found Item</a>
+                            </li>
+                            <li class='nav-item'>
+                                <a class='nav-link' href='browse-items'>Browse Lost and Found Items</a>
+                            </li>
+                        </ul>
+                        <br>
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+            </nav>
         </div>
 
-<!-- /////////////////////////////////////Sign In///////////////// -->
+        <!-- /////////////////////////////////////Sign In///////////////// -->
         <div class='container'>
             <form class='px-4 py-3'>
                 <div class='form-group'>
@@ -56,12 +76,12 @@
                 <button type='submit' class='btn btn-primary'>Sign in</button>
             </form>
             <div class='dropdown-divider'></div>
-            <a class='dropdown-item' href='SignUp.html'>New around here? Sign up</a>
+            <a class='dropdown-item' href='SignUp'>New around here? Sign up</a>
             <!-- <a class='dropdown-item' href='#'>Forgot password?</a> -->
         </div>
 
     </div>
-
+    
     <!-- /////////////////////////////////Sign In/ Sign Up/////////////////////////////////////////////////////  -->
 
     <!-- ///////////////////////////////FOOTER///////////////////////////////////////////////// -->
@@ -71,9 +91,9 @@
         <div class='container-fluid text-center'>
 
             <ul class='list-inline'>
-                <li class='list-inline-item'><a href='index.html'>Home</a></li>
-                <li class='list-inline-item'><a href='lost.html'>Lost Report</a></li>
-                <li class='list-inline-item'><a href='found.html'>Found Report</a></li>
+                <li class='list-inline-item'><a href='index'>Home</a></li>
+                <li class='list-inline-item'><a href='lost'>Lost Report</a></li>
+                <li class='list-inline-item'><a href='found'>Found Report</a></li>
             </ul>
 
         </div>
