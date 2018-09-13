@@ -1,4 +1,16 @@
 // Connects to the Form for the lost item (Using categories table)
+$(document).ready(function(){
+    $("#userNames").show();
+    $("#itemsEntry").hide();
+    $("#submitItems").hide();
+
+$("#enterLostItems").click(function(){
+    event.preventDefault();
+    $("#userNames").hide();
+    $("#itemsEntry").show();
+    $("#submitItems").show();
+    
+});
 
 var subcategory = {
     Electronics: ['Mobile(apple)','Mobile(android)','laptop','tablet','earbuds/ headphones','computer accessories'],
@@ -29,3 +41,5 @@ var subcategory = {
     document.getElementById('category').selectedIndex = 0;
     document.getElementById('categorySelect').selectedIndex = 0;
     }
+
+});

@@ -28,9 +28,9 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
   });
 
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
-  });
+  // app.get('*', function(req, res) {
+  //   res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
+  // });
 
   // found route loads found.html
   app.get('/found', function (req, res) {
