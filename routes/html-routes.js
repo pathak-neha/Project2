@@ -28,9 +28,9 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
   });
 
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
-  });
+  // app.get('*', function(req, res) {
+  //   res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
+  // });
 
   // found route loads found.html
   app.get('/found', function (req, res) {
@@ -39,6 +39,7 @@ module.exports = function (app) {
 
   // lost route loads lost.html
   app.get('/lost', function(req, res) {
+    console.log(req.headers);
     res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
   });
 

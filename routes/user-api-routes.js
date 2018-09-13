@@ -21,16 +21,19 @@ app.post('/api/login', (req, res) => {
           email: req.body.email,
             password: req.body.pass
         }
-    }).then(function (dbUser,err) {
-        console.log("user length: "+dbUser);
+    }).then(function (dbUser) {
+        //console.log(err);
+       
         if(dbUser !== null){
         var user = dbUser.username;
         console.log("user in api: "+user);
       
-        jwt.sign({ user }, 'secretkey', { expiresIn: '3200s' }, (err, token) => {
-          token.trim()+=("_"+dbUser.id);
+        jwt.sign({ user }, 'secretkey', { expiresIn: '60s' }, (err, token) => {
+         // token+=("_"+dbUser.id);
+        
             res.json({
-                token
+                token: token,
+                id: dbUser.id
             });
         });
     }else{
@@ -46,6 +49,7 @@ app.post('/api/login', (req, res) => {
 // Verify Token
 function verifytoken(req, res, next) {
     //Get auth header value
+    console.log(req.headers);
     const bearerHeader = req.headers['authorization'];
     //Check if bearer is undefined
     if (typeof bearerHeader !== 'undefined') {
