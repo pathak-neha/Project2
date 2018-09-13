@@ -10,7 +10,7 @@
   <link rel='stylesheet' href='../assets/css/styles.css' media='screen' title='no title'>
   <script src='https://code.jquery.com/jquery.js'></script>
   <script src='../assets/js/found.js'></script>
-  <script src='../assets/js/lostTable.js'></script>
+ 
   <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
 </head>
 
@@ -65,7 +65,7 @@
       </div>
       
         <!-- ////////////////////////////First and last name and Email Address///////////////////////////////////////// -->
-        <form>
+        <form id="userNames">
         <div class='input-group'>
           <div class='input-group-prepend'>
             <span class='input-group-text' id=''>First Name</span>
@@ -88,11 +88,12 @@
         </div>
         <hr>
         <div class='container'>
-          <button type='button' class='btn btn-primary btn-lg btn-block'>Enter to Add Found Item</button>
+          <button id="enterFoundItems" type='button' class='btn btn-primary btn-lg btn-block'>Enter to Add Found Item</button>
         </div>
         </form>
 <br>
         <!-- ///////////////////////////////Item Category///////////////////////////////////////////// -->
+        <form id="itemsEntry">
         <div class='input-group mb-3'>
           <div class='input-group-prepend'>
             <label class='input-group-text' for='inputGroupSelect01'>Item Category</label>
@@ -168,7 +169,7 @@
         <!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
     </div>
     <div class='container'>
-      <button type='button' class='btn btn-primary btn-lg btn-block'>SUBMIT</button>
+      <button id="submitItems" type='button' class='btn btn-primary btn-lg btn-block'>SUBMIT</button>
     </div>
     </form>
     <br>
