@@ -39,5 +39,6 @@
             "always"
         ],
         "prettier/prettier": "error"
+        
     }
 }
