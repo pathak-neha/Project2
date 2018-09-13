@@ -19,7 +19,14 @@ router.get('/lost', function (req, res) {
   })
 });
 
+router.get('/browse-lost', function (req, res) {
+  db.Lost.findAll({include:db.User}).then(function(data){
+    res.render('browse',data)
+  })
+});
+
 router.post('/api/lost', function (req, res) {
+  // 
   db.Lost.create(req.body).then(function(data){
     res.json('lost',data)
   })
@@ -31,7 +38,15 @@ router.put('/api/lost/:id', function (req, res) {
 
 // ---------- ROUTES FOR 'FOUND' TABLE 
 router.get('/found', function (req, res) {
-  
+  db.Found.findAll({include:db.User}).then(function(data){
+    res.render('found',data)
+  })
+});
+
+router.get('/browse-found', function (req, res) {
+  db.Lost.findAll({include:db.User}).then(function(data){
+    res.render('browse',data)
+  })
 });
 
 router.post('/api/found', function (req, res) {

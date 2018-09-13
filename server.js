@@ -17,10 +17,10 @@ var db = require('./models');
 
 // Sets up the Express app to handle data parsing
 // Set Handlebars.
-// var exphbs = require("express-handlebars");
+var exphbs = require("express-handlebars");
 
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,20 +28,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Static directory
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 // Import routes and give the server access to them.
-// var routes = require("./routes/html-routes");
+var routes = require("./routes/html-routes");
 // var apiroutes = require("./routes/lostfound-api-routes");
 
-// app.use(routes);
+app.use(routes);
 // app.use(apiroutes);
 
 // Routes
 // =============================================================
-require('./routes/html-routes.js')(app);
-require('./routes/lostfound-api-routes.js')(app);
-require('./routes/user-api-routes.js')(app);
+// require('./routes/html-routes.js')(app);
+// require('./routes/lostfound-api-routes.js')(app);
+// require('./routes/user-api-routes.js')(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
