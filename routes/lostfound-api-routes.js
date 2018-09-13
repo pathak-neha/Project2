@@ -4,138 +4,43 @@
 
 // Dependencies
 // =============================================================
+var path = require('path');
+var express = require('express');
+var router = express.Router();
 
-// Requiring our models
-var db = require('../models');
+// Import the model to use its database functions.
+var db = require('../models')
 
-// Routes
-// =============================================================
-module.exports = function(app) {
-////////////////////////////////////////////////////////////////
-  // GET route for getting all of the losts
-  app.get('/api/lost', function(req, res) {
-    var query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
-    }
-    // 1. Add a join here to include all of the User to these posts
-    db.LostAndFound.findAll({ include: [ db.User ]},{
-      where: query
-    }).then(function(dbLost) {
-      res.json(dbLost);
-    });
-  });
-////////////////////////////////////////////////////////////////
-  // GET route for getting all of the found
-  app.get('/api/found', function(req, res) {
-    var query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
-    }
-    // 1. Add a join here to include all of the users who found items
-    db.LostAndFound.findAll({ include: [ db.User ]},{
-      where: query
-    }).then(function(dbFound) {
-      res.json(dbFound);
-    });
-  });
-////////////////////////////////////////////////////////////////////////
-  // Get route for retrieving a single lost
-  app.get('/api/lost/:id', function(req, res) {
-    // 2. Add a join here to include the User who Lost an Item
-    db.LostAndFound.findOne({ include: [ db.User ]} ,{
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbLostItem) {
-      console.log(dbLostItem);
-      res.json(dbLostItem);
-    });
-  });
-//////////////////////////////////////////////////////////////////////
-   // Get route for retrieving a single found
-   app.get('/api/found/:id', function(req, res) {
-    // 2. Add a join here to include the User who Lost an Item
-    db.LostAndFound.findOne({ include: [ db.User ]} ,{
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbFoundItem) {
-      console.log(dbFoundItem);
-      res.json(dbFoundItem);
-    });
-  });
+// Create all our routes and set up logic within those routes where required.
+// ---------- ROUTES FOR 'LOST' TABLE 
+router.get('/lost', function (req, res) {
+  db.Lost.findAll({include:db.User}).then(function(data){
+    res.render('lost',data)
+  })
+});
 
-   //////////////////////////////////////////////////
+router.post('/api/lost', function (req, res) {
+  db.Lost.create(req.body).then(function(data){
+    res.json('lost',data)
+  })
+});
 
-  // POST route for saving a new Lost Item
-  app.post('/api/lostpost', function(req, res) {
-    db.LostAndFound.create({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      phone: req.body.phone,
-      category: req.body.category,
-      subcategory: req.body.subcategory,
-      size: req.body.size,
-      color: req.body.color,
-      attributes: req.body.attributes,
-      photo: req.body.photo,
-      location: req.body.location,
-      description: req.body.description,
-      lost:req.body.isLost
-    
-      }).then(function(dbLostPost) {
-      res.json(dbLostPost);
-    });
-  });
+router.put('/api/lost/:id', function (req, res) {
+  
+});
 
+// ---------- ROUTES FOR 'FOUND' TABLE 
+router.get('/found', function (req, res) {
+  
+});
 
-  //////////////////////////////////////////
-  // POST route for saving a new Found Item
-  app.post('/api/foundpost', function(req, res) {
-    db.LostAndFound.create({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      phone: req.body.phone,
-      category: req.body.category,
-      subcategory: req.body.subcategory,
-      size: req.body.size,
-      color: req.body.color,
-      attributes: req.body.attributes,
-      photo: req.body.photo,
-      location: req.body.location,
-      description: req.body.description,
-      lost:req.body.isLost
-    
-      }).then(function(dbFoundPost) {
-      res.json(dbFoundPost);
-    });
-  });
+router.post('/api/found', function (req, res) {
+  
+});
 
+router.put('/api/found/:id', function (req, res) {
+  
+});
 
-  // DELETE route for deleting item
-  app.delete('/api/item/:id', function(req, res) {
-    db.LostAndFound.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbItem) {
-      res.json(dbItem);
-    });
-  });
-
-  // PUT route for updating posts
-  app.put('/api/item', function(req, res) {
-    db.LostAndFound.update(
-      req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      }).then(function(dbItem) {
-      res.json(dbItem);
-    });
-  });
-};
+// Export routes for server.js to use.
+module.exports = router;
