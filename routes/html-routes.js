@@ -5,11 +5,7 @@
 // Dependencies
 // =============================================================
 var path = require('path');
-
-// Routes
-// =============================================================
 var express = require('express');
-
 var router = express.Router();
 
 // Import the model to use its database functions.
@@ -17,49 +13,34 @@ var lost = require('../models/lost.js');
 var found = require('../models/found.js');
 var user = require('../models/user.js');
 
-module.exports = function (app) {
-// Each of the below routes just handles the HTML page that the user gets sent to.
-  app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
-  });
-  // index route loads index.html
+// Create all our routes and set up logic within those routes where required.
+router.get('/', function (req, res) {
+  res.render('home');
+});
 
-  app.get('/index', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
-  });
+router.get('/index', function (req, res) {
+  res.render('home');
+});
 
-  // app.get('*', function(req, res) {
-  //   res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
-  // });
+router.get('/found', function (req, res) {
+  res.render('found')
+});
 
-  // found route loads found.html
-  app.get('/found', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/found.html'));
-  });
+router.get('/lost', function (req, res) {
+  res.render('found')
+});
 
-  // lost route loads lost.html
-  app.get('/lost', function(req, res) {
-    console.log(req.headers);
-    res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
-  });
+router.get('/browse-items', function (req, res) {
+  res.render('lost')
+});
 
-  app.get('/browse-items', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/browse.html'));
-  });
+router.get('/signIn', function (req, res) {
+  res.render('signIn')
+});
 
-  // signIn route loads SignIn.html
-  app.get('/signIn', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/SignIn.html'));
-  });
+router.get('/signUp', function (req, res) {
+  res.render('signUp')
+});
 
-  // signUp route loads SignUp.html
-  app.get('/signUp', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/SignUp.html'));
-  });
-
-  // users route loads user-manager.html
-  app.get('/users', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/user-manager.html'));
-  });
-};
-
+// Export routes for server.js to use.
+module.exports = router;

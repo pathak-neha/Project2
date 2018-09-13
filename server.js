@@ -28,13 +28,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Static directory
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 // Import routes and give the server access to them.
 var routes = require("./routes/html-routes");
-var apiroutes = require("./routes/lostfound-api-routes");
+// var apiroutes = require("./routes/lostfound-api-routes");
 
-// app.use(routes);
+app.use(routes);
 // app.use(apiroutes);
 
 // Routes
