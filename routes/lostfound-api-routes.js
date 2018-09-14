@@ -34,9 +34,33 @@ router.get('/lost', function (req, res) {
 // });
 
 router.get('/browse-lost-items', function(req, res) {
-  db.Lost.findAll({}).then(function(data) {
+  console.log(req.query);
+  db.Lost.findAll({
+    where: {
+      // category: 'Electronics',
+      // // color: null,
+      // // size: null
+    }
+  }).then(function(data) {
+    console.log(data);
+    console.log('Querying the lost items now...')
     res.render('browse', {lostItems: data});
-  })
+  });
+});
+
+router.get('/browse-found-items', function(req, res) {
+  console.log(req.query);
+  db.Found.findAll({
+    where: {
+      // category: 'Electronics',
+      // // color: null,
+      // // size: null
+    }
+  }).then(function(data) {
+    console.log(data);
+    console.log('Querying the lost items now...')
+    res.render('browse', {foundItems: data});
+  });
 });
 
 router.post('/api/lost', function (req, res) {

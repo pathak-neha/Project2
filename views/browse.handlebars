@@ -129,6 +129,13 @@
         {{/each}}
     </div>
 
+{{#each foundItems}}
+    <div class="searchedFoundItems">
+        <p>{{this.id}}. {{this.category}} {{this.subcategory}} {{this.size}} {{this.color}}
+            {{this.location}}  {{this.description}}
+        </p>
+        {{/each}}
+    </div>
 
         <!-- ///////////////////////////////FOOTER///////////////////////////////////////////////// -->
         <!-- Footer -->
