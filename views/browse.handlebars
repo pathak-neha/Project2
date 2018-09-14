@@ -1,65 +1,157 @@
-    <!-- ///////////////////////////////HEADER//////////////////////////////////////////////////// -->
-    <div class='card text-center bg-light'>
-        <div class='card-header'>
-          <nav class="navbar navbar-expand-lg navbar-light">
+<!-- ///////////////////////////////HEADER//////////////////////////////////////////////////// -->
+<div class='card text-center bg-light'>
+    <div class='card-header'>
+        <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="#"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class='navbar-nav mr-auto nav nav-tabs collapse navbar-collapse card-header-tabs'>
                     <li class='nav-item'>
-                    <a class='nav-link' href='index'>Home</a>
-                </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href='SignIn'>Sign In</a>
-                </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href='SignUp'>Sign Up</a>
-                </li>
+                        <a class='nav-link' href='index'>Home</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='SignIn'>Sign In</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='SignUp'>Sign Up</a>
+                    </li>
 
-                <li class='nav-item'>
-                    <a class='nav-link' href='lost'>Report Lost Item</a>
-                </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href='found'>Report Found Item</a>
-                </li>
-                <li class='nav-item'>
-                    <a class='nav-link active' href='browse-items'>Browse Lost and Found Items</a>
-                </li>
-            </ul>
-            <br>
-            <form class="form-inline">
+                    <li class='nav-item'>
+                        <a class='nav-link' href='lost'>Report Lost Item</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='found'>Report Found Item</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link active' href='browse-items'>Browse Lost and Found Items</a>
+                    </li>
+                </ul>
+                <br>
+                <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
                 </form>
-          </nav>
+        </nav>
         </div>
 
-<!-- /////////////////////////////////////Tables and Drop Downs///////////////// -->
+        <!-- /////////////////////////////////////Tables and Drop Downs///////////////// -->
+
+        <div>
+            <h7>Go through the drop downs to search for the item you're looking for.</h7>
+            <br>
+            <br>
+
+<form id="searchEntry">
+        <div class='input-group mb-3'>
+          <div class='input-group-prepend'>
+            <label class='input-group-text' for='inputGroupSelect01'>List Type</label>
+          </div>
+          <select class='custom-select' id='searchTableID'>
+            <option selected>Choose...</option>
+            <option value='Lost Items'>Items People Have Lost</option>
+            <option value='Found Items'>Items People Have Found</option>
+          </select>
+        </div>
+        <!-- ///////////////////////////////Categories///////////////////////////////////////////// -->
+        <div class='input-group mb-3'>
+          <div class='input-group-prepend'>
+            <label class='input-group-text' for='inputGroupSelect01'>Category</label>
+          </div>
+          <select class='custom-select' id='searchCategoryID' size='1' onchange='makeSubmenu(this.value)'>
+            <option value='' disabled selected>Choose Category</option>
+            <option>Electronics</option>
+            <option>Wallet</option>
+            <option>Clothing</option>
+            <option>Accessories</option>
+            <option>Documents</option>
+            <option>Other</option>
+          </select>
+
+          <select class='custom-select' id='categorySelect' size='1'>
+            <option value='' disabled selected>Choose Subcategory</option>
+            <option></option>
+          </select>
+        </div>
+        <!-- ///////////////////////////////Color///////////////////////////////////////////// -->
+        <div class='input-group mb-3'>
+          <div class='input-group-prepend'>
+            <label class='input-group-text' for='inputGroupSelect01'>Color</label>
+          </div>
+          <select class='custom-select' id='searchColorID'>
+            <option selected>Choose...</option>
+            <option value='1'>Red</option>
+            <option value='2'>Blue</option>
+            <option value='3'>Green</option>
+            <option value='1'>Yellow</option>
+            <option value='2'>Orange</option>
+            <option value='3'>Purple</option>
+            <option value='1'>White</option>
+            <option value='2'>Black</option>
+            <option value='3'>Grey</option>
+            <option value='2'>Pink</option>
+            <option value='3'>Brown</option>
+            <option value='1'>Mix of many colors</option>
+          </select>
+        </div>
+        <!-- ////////////////////////////////////Size//////////////////////////////////////////// -->
+        <div class='input-group mb-3'>
+          <div class='input-group-prepend'>
+            <label class='input-group-text' for='inputGroupSelect01'>Size</label>
+            </div>
+            <select class='custom-select' id='searchSizeID'>
+                <option selected>Choose...</option>
+                <option value='1'>Small (30cm and under)</option>
+                <option value='2'>Medium (Larger than 30cm)</option>
+                <option value='3'>Large (Larger than 60cm)</option>
+            </select>
+            </div>
         
-    <div>
-        {{!-- add handlebars here --}}
-        {{!-- sent as 'data' --}}
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
     </div>
-    
-    <!-- ///////////////////////////////FOOTER///////////////////////////////////////////////// -->
-    <!-- Footer -->
-    <footer class='page-footer font-small blue pt-4' style='text-align: center'>
-
-        <div class='container-fluid text-center'>
-
-            <ul class='list-inline'>
-                <li class='list-inline-item'><a href='index'>Home</a></li>
-                <li class='list-inline-item'><a href='lost'>Lost Report</a></li>
-                <li class='list-inline-item'><a href='found'>Found Report</a></li>
-            </ul>
-
+    <div class='container'>
+      <button type='button' id="searchBtn" class='btn btn-primary btn-lg btn-block'>SUBMIT</button>
+    </div>
+    </form>
+    <br>
+  </div>
         </div>
 
-        <div class='footer-copyright text-center py-3'>© 2018 Copyright:
-            <a href='#'> Lost and Found</a>
-        </div>
+<!-- ///////////////////////////////Table appears here///////////////////////////////////////////////// -->
+ 
+    {{#each lostItems}}
+    <div class="searchedLostItems">
+        <p>{{this.id}}. {{this.category}} {{this.subcategory}} {{this.size}} {{this.color}}
+            {{this.location}}  {{this.description}}
+        </p>
+        {{/each}}
+    </div>
 
-    </footer>
+
+        <!-- ///////////////////////////////FOOTER///////////////////////////////////////////////// -->
+        <!-- Footer -->
+        <footer class='page-footer font-small blue pt-4' style='text-align: center'>
+
+            <div class='container-fluid text-center'>
+
+                <ul class='list-inline'>
+                    <li class='list-inline-item'>
+                        <a href='index'>Home</a>
+                    </li>
+                    <li class='list-inline-item'>
+                        <a href='lost'>Lost Report</a>
+                    </li>
+                    <li class='list-inline-item'>
+                        <a href='found'>Found Report</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class='footer-copyright text-center py-3'>© 2018 Copyright:
+                <a href='#'> Lost and Found</a>
+            </div>
+
+        </footer>

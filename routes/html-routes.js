@@ -31,7 +31,7 @@ router.get('/lost', function (req, res) {
 });
 
 router.get('/browse-items', function (req, res) {
-  res.render('lost')
+  res.render('browse')
 });
 
 router.get('/signIn', function (req, res) {

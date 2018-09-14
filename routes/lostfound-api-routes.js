@@ -19,9 +19,23 @@ router.get('/lost', function (req, res) {
   })
 });
 
-router.get('/browse-lost', function (req, res) {
-  db.Lost.findAll({include:db.User}).then(function(data){
-    res.render('browse',data)
+// router.get('/browse-lost', function (req, res) {
+//   db.Lost.findAll({include:db.User}).then(function(data){
+//     res.render('browse',data)
+//   })
+// });
+
+// router.get('/api/find-lost-items', function(req, res) {
+//   db.Lost.findAll({
+//     where: {color: req.body.color}
+// }).then(function(data) {
+//   console.log(data);
+//   res.render('browse', {lostItems: data});
+// });
+
+router.get('/browse-lost-items', function(req, res) {
+  db.Lost.findAll({}).then(function(data) {
+    res.render('browse', {lostItems: data});
   })
 });
 
