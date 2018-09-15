@@ -27,11 +27,11 @@ router.get('/found', function (req, res) {
 });
 
 router.get('/lost', function (req, res) {
-  res.render('found')
+  res.render('lost')
 });
 
 router.get('/browse-items', function (req, res) {
-  res.render('lost')
+  res.render('browse')
 });
 
 router.get('/signIn', function (req, res) {
