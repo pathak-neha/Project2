@@ -1,3 +1,4 @@
+
 <!-- ////////////////////////HEADER////////////////////////////////// -->
   <div class='card text-center text-white bg-danger'>
     <div class='card-header'>
@@ -46,9 +47,9 @@
         <hr>
       </div>
 
-      <form id="userNames">
+      
         <!-- ////////////////////////////First and last name and Email Address///////////////////////////////////////// -->
-        <form>  
+        <form id="userNames">  
         <div class='input-group'>
           <div class='input-group-prepend'>
             <span class='input-group-text' id=''>First Name</span>
@@ -72,7 +73,7 @@
         </div>
         <hr>
         <div class='container'>
-          <button type='button' class='btn btn-primary btn-lg btn-block'>Enter to Add Lost Item</button>
+          <button id="enterLostItems" type='button' class='btn btn-primary btn-lg btn-block'>Enter to Add Lost Item</button>
         </div>
         </form>
 <br>
@@ -94,6 +95,7 @@
 
           <select class='custom-select' id='categorySelect' size='1'>
             <option value='' >Choose Subcategory</option>
+            <option value='' disabled selected >Choose Subcategory</option>
             <option></option>
           </select>
         </div>
@@ -153,7 +155,7 @@
         <!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
     </div>
     <div class='container'>
-      <button type='button' class='btn btn-primary btn-lg btn-block'>SUBMIT</button>
+      <button id="submitItems" type='button' class='btn btn-primary btn-lg btn-block'>SUBMIT</button>
     </div>
     </form>
     <br>
@@ -174,7 +176,7 @@
     </div>
   </footer>
   <script>
-     $("#userNames").show();
+   $("#userNames").show();
     $("#itemsEntry").hide();
     $("#submitItems").hide();
 
@@ -196,7 +198,7 @@ var subcategory = {
     };
 
     function makeSubmenu(value) {
-    if(value.length==0) document.getElementsById('categorySelect').innerHTML = '<option></option>';
+    if(value.length==0) document.getElementById('categorySelect').innerHTML = '<option></option>';
     else {
     var categoryOptions = '';
     for(categoryId in subcategory[value]) {
@@ -215,6 +217,5 @@ var subcategory = {
     document.getElementById('category').selectedIndex = 0;
     document.getElementById('categorySelect').selectedIndex = 0;
     }
-
   </script>
   <!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
