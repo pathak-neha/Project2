@@ -10,6 +10,7 @@ var router = express.Router();
 
 // Import the model to use its database functions.
 var db = require('../models')
+var globalData;
 
 // Create all our routes and set up logic within those routes where required.
 // ---------- ROUTES FOR 'LOST' TABLE 
@@ -76,13 +77,16 @@ router.get('/browse-lost-items', function (req, res) {
     db.Lost.findAll({
       where: query
     }).then(function (data) {
-      res.render('browse-results', { lostItems: data });
+      globalData = data;
+      
       console.log(data);
       console.log('Querying the lost items now...');
     });
   });
 
-
+router.get('/browse-lost-items-result', function(req, res) {
+  res.render('browse-results', {lostItems: globalData})
+});
 
 
 router.get('/browse-found-items', function (req, res) {

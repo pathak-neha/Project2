@@ -1,9 +1,13 @@
 $(document).ready(function() {
 
+
+
 var searchData;
 
 $('#searchBtn').on('click', function() {
     event.preventDefault();
+    // window.location.href='http://localhost:8080/browse-lost-items-result';
+    setTimeout(displayResults, 1000);
 
     if ($('#searchTableID').val() == 'Lost Items') {
         queryLostItems();
@@ -11,6 +15,11 @@ $('#searchBtn').on('click', function() {
         queryFoundItems();
     }
 });
+
+function displayResults() {
+    window.location.href='http://localhost:8080/browse-lost-items-result';
+}
+
 
 function queryLostItems() {
     console.log('Table type: ' + $('#searchTableID').val());
@@ -96,7 +105,6 @@ function queryLostItems() {
         type: 'GET',
         data: searchData
     }).then(function(data) {
-    
     });
 };
 
@@ -116,7 +124,7 @@ function queryFoundItems() {
         type: 'GET',
         data: searchData
     }).then(function() {
-
+        
         // console.log("This is data: " + data);
         // $('#hbsContainer').append('browse-results', {lostItems: data});
         // console.log("Querying Lost Items...")

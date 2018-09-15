@@ -22,7 +22,7 @@ var subcategory = {
     };
 
     function makeSubmenu(value) {
-    if(value.length==0) document.getElementById('categorySelect').innerHTML = '<option></option>';
+    if(value.length==0) document.getElementsById('categorySelect').innerHTML = '<option></option>';
     else {
     var categoryOptions = '';
     for(categoryId in subcategory[value]) {
@@ -42,4 +42,5 @@ var subcategory = {
     document.getElementById('categorySelect').selectedIndex = 0;
     }
 
+   
 });

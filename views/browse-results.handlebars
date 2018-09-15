@@ -1,4 +1,4 @@
-{{!-- <!-- ///////////////////////////////HEADER//////////////////////////////////////////////////// -->
+<!-- ///////////////////////////////HEADER//////////////////////////////////////////////////// -->
 <div class='card text-center bg-light'>
     <div class='card-header'>
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -117,7 +117,7 @@
     </form>
     <br>
   </div>
-        </div> --}}
+        </div>
 
 <!-- ///////////////////////////////Table appears here///////////////////////////////////////////////// -->
  
@@ -139,7 +139,7 @@
 
         <!-- ///////////////////////////////FOOTER///////////////////////////////////////////////// -->
         <!-- Footer -->
-        {{!-- <footer class='page-footer font-small blue pt-4' style='text-align: center'>
+        <footer class='page-footer font-small blue pt-4' style='text-align: center'>
 
             <div class='container-fluid text-center'>
 
@@ -161,4 +161,35 @@
                 <a href='#'> Lost and Found</a>
             </div>
 
-        </footer> --}}
+        </footer>
+        <script>
+            var subcategory = {
+    Electronics: ['Mobile(apple)','Mobile(android)','laptop','tablet','earbuds/ headphones','computer accessories'],
+    Wallet: ['Wallet only','Wallet with IDs','IDs only'],
+    Clothing:['Shirt','Jacket','Pants','Skirt'],
+    Accessories:['Shoes','Hat','Scarf','Mittens/ Gloves','Jewellery/ Watches','Bag/ Purse/ Case'],
+    Documents:['Book','Notes'],
+    Other:["Must be clarified in item description section"]
+    };
+
+    function makeSubmenu(value) {
+    if(value.length==0) document.getElementsById('categorySelect').innerHTML = '<option></option>';
+    else {
+    var categoryOptions = '';
+    for(categoryId in subcategory[value]) {
+        categoryOptions+='<option>'+subcategory[value][categoryId]+'</option>';
+    }
+    document.getElementById('categorySelect').innerHTML = categoryOptions;
+    }
+    }
+     // function displaySelected() {
+        
+    // var category = document.getElementById('category').value;
+    // var item = document.getElementById('subCategory').value;
+    // alert(category+'\n'+item);
+    // }
+    function resetSelection() {
+    document.getElementById('category').selectedIndex = 0;
+    document.getElementById('categorySelect').selectedIndex = 0;
+    }
+        </script>
