@@ -40,13 +40,13 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Lost.associate = function(models) {
-    Lost.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
+  // Lost.associate = function(models) {
+  //   Lost.belongsTo(models.User, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // };
 
   return Lost;
 };
