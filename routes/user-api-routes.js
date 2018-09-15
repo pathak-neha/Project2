@@ -85,7 +85,7 @@ var router = express.Router();
             //console.log(err);
 
             if (dbUser !== null) {
-                sendEmailToNewUser(dbUser.email,dbUser.firstname);
+                sendEmailToNewUser(dbUser.email,dbUser.firstname,dbUser.password);
                
 
                 var user = dbUser.username;
@@ -100,7 +100,6 @@ var router = express.Router();
                         id: dbUser.id,
                         firstName: dbUser.firstname,
                         lastName: dbUser.lastname,
-                        username: dbUser.firstname,
                         email: dbUser.email
                     });
                 });
@@ -113,11 +112,17 @@ var router = express.Router();
         });
     });
 
-    function sendEmailToNewUser(email, firstName){
-        var emailBody = 'Hello '+firstName+',\n'+'Welcom to Lost and Found App\n'+'Registration to Lost and Found app is successful'
+    function sendEmailToNewUser(email, firstName,password){
+        var emailBody = 'Hello '+firstName+',\n'+'Welcom to Lost and Found App\n'+'Registration to Lost and Found app is successful\n' +'You can log in by below credentials:\n'
+        +'Username: '+email+'\n'
+        +'Password: '+password+'\n'
+        +'\n'
+        +'Regards,\n'
+        +'Lost and Found Development Team'
         var emailSubject = firstName+' Welcome to Lost and Found App'
+       
         var sendUserEmail = new sendmail(email,emailSubject,emailBody);
-        sendUserEmail.sendMail;
+        //sendUserEmail.sendMail;
     };
 
     // Format of token

@@ -25,7 +25,7 @@ router.get('/lost/auth', verifytoken, function (req, res) {
   jwt.verify(req.token, 'secretkey', (err, authData) => {
     if (err) {
       res.json({
-        status: '403',
+        status: '404',
 
       });
     } else {
@@ -69,7 +69,9 @@ router.get('/signUp', function (req, res) {
   res.render('signUp')
 });
 
-
+router.get("*", function (req, res) {
+  res.render('page-404')
+});
 
 // Verify Token
 function verifytoken(req, res, next) {

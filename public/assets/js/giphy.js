@@ -49,7 +49,7 @@ function clickLostButtonListener() {
             location.replace('/lost');
                  }
                  else{
-                     location.reload();
+                    location.replace('*');
                  }
       }
       );
