@@ -2,9 +2,11 @@ var db = require('../models');
 var jwt = require('jsonwebtoken');
 var sendmail = require("../sendEmail.js");
 
-module.exports = function (app) {
+var express = require('express');
+var router = express.Router();
+//module.exports = function (app) {
 
-    app.post('/api/posts', verifytoken, (req, res) => {
+    router.post('/api/posts', verifytoken, (req, res) => {
         jwt.verify(req.token, 'secretkey', (err, authData) => {
             if (err) {
                 res.sendStatus(403);
@@ -18,7 +20,7 @@ module.exports = function (app) {
     });
 
 
-    app.post('/api/emailValidate', (req, res) => {
+    router.post('/api/emailValidate', (req, res) => {
         console.log("req.body.email: " + req);
         db.User.findOne({
             where: {
@@ -40,7 +42,7 @@ module.exports = function (app) {
         });
     });
 
-    app.post('/api/login', (req, res) => {
+    router.post('/api/login', (req, res) => {
         console.log("req.body.email: " + req.body.email);
         db.User.findOne({
             where: {
@@ -72,7 +74,7 @@ module.exports = function (app) {
         });
     });
 
-    app.post('/api/userpost', (req, res) => {
+    router.post('/api/userpost', (req, res) => {
         db.User.create({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
@@ -176,4 +178,5 @@ module.exports = function (app) {
     //   });
     // });
 
-};
+//};
+module.exports = router;

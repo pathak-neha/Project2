@@ -40,3 +40,5 @@ var subcategory = {
     document.getElementById('category').selectedIndex = 0;
     document.getElementById('categorySelect').selectedIndex = 0;
     }
+
+});

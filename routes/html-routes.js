@@ -10,7 +10,6 @@ var jwt = require('jsonwebtoken');
 // Routes
 // =============================================================
 var express = require('express');
-
 var router = express.Router();
 
 // Import the model to use its database functions.
@@ -18,28 +17,10 @@ var lost = require('../models/lost.js');
 var found = require('../models/found.js');
 var user = require('../models/user.js');
 
-module.exports = function (app) {
-// Each of the below routes just handles the HTML page that the user gets sent to.
-  app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
-  });
-  // index route loads index.html
-
-  app.get('/index', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
-  });
-
-  // app.get('*', function(req, res) {
-  //   res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
-  // });
-
-  // found route loads found.html
-  app.get('/found', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/found.html'));
-  });
 
   // lost route loads lost.html
-  app.get('/lost/auth', verifytoken, function(req, res) {
+
+  router.get('/lost/auth', verifytoken, function(req, res) {
     console.log(req.headers);
     jwt.verify(req.token, 'secretkey', (err, authData) => {
       if (err) {
@@ -53,39 +34,32 @@ module.exports = function (app) {
               message: 'Post created...',
               authData
           });
-          res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
+          res.render('lost');
       };
   });
     //res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
   });
 
-  app.get('/lost',function(req, res) {
-  
-   res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
-     
-  });
     
+router.get('/', function (req, res) {
+  res.render('home')
+});
 
-  app.get('/browse-items', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/browse.html'));
-  });
+router.get('/lost', function (req, res) {
+  res.render('found')
+});
 
-  // signIn route loads SignIn.html
-  app.get('/signIn', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/SignIn.html'));
-  });
+router.get('/browse-items', function (req, res) {
+  res.render('lost')
+});
 
-  // signUp route loads SignUp.html
-  app.get('/signUp', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/SignUp.html'));
-  });
-
-  // users route loads user-manager.html
-  app.get('/users', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/user-manager.html'));
-  });
+router.get('/signIn', function (req, res) {
+  res.render('signIn')
+});
+router.get('/ignUp', function (req, res) {
+  res.render('SignUp')
+});
   
-};
 
 // Verify Token
 function verifytoken(req, res, next) {
@@ -108,5 +82,5 @@ function verifytoken(req, res, next) {
       res.sendStatus(403);
 
   }
-
 }
+module.exports = router;

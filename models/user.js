@@ -14,13 +14,13 @@ module.exports = function(sequelize, DataTypes) {
         len: [3, 15]
       }
     },
-    // username: {
-    //   type: DataTypes.TEXT,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [3, 15]
-    //   }
-    // },
+    username: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        len: [3, 15]
+      }
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,

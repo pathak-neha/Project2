@@ -68,7 +68,7 @@ function clickSingInButtonListener() {
       localStorage.setItem('user_lastname', res.lastName);
       localStorage.setItem('user_email', res.email);
       // Reload the page to get the updated list
-      location.replace('/');
+     location.replace('/');
     }
     );
   });
