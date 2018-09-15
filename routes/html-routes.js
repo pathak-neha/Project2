@@ -34,6 +34,10 @@ router.get('/browse-items', function (req, res) {
   res.render('browse')
 });
 
+router.get('/lost-table', function (req, res) {
+  res.render('browse-results');
+});
+
 router.get('/signIn', function (req, res) {
   res.render('signIn')
 });

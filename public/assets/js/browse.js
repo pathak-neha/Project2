@@ -1,9 +1,6 @@
 $(document).ready(function() {
 
-var category;
-var color;
-var size;
-
+var searchData;
 
 $('#searchBtn').on('click', function() {
     event.preventDefault();
@@ -16,22 +13,90 @@ $('#searchBtn').on('click', function() {
 });
 
 function queryLostItems() {
-    console.log($('#searchTableID').val());
-    console.log($('#searchCategoryID').val());
-    console.log($('#searchColorID').val());
-    console.log($('#searchSizeID').val());
+    console.log('Table type: ' + $('#searchTableID').val());
+    console.log('Category: ' + $('#searchCategoryID').val());
+    console.log('Color: ' + $('#searchColorID').val());
+    console.log('Size: ' + $('#searchSizeID').val());
 
-    var searchData = {
+    var categoryVar = $('#searchCategoryID').val()
+    var colorVar =  $('#searchColorID').val()
+    var sizeVar = $('#searchSizeID').val()
+
+    if (categoryVar == null && colorVar !== 'Choose...'  && sizeVar !== 'Choose...'){
+        console.log('Missing: Category only')
+        searchData = {
+            color: $('#searchColorID').val(),
+            size: $('#searchSizeID').val(),
+            query: {
+                color: req.query.color, 
+                size: req.query.size
+            } 
+        }
+    } else if (colorVar== 'Choose...' && categoryVar !== null  && sizeVar !== 'Choose...') {
+        console.log('Missing: Color only');
+        searchData = {
+            category: $('#searchCategoryID').val(),
+            size: $('#searchSizeID').val(),
+            query: {
+                category: req.query.category, 
+                size: req.query.size
+            } 
+        }
+} else if (sizeVar == 'Choose...' && categoryVar !== null  && colorVar !== 'Choose...') {
+    console.log('Missing: Size only');
+    searchData = {
         category: $('#searchCategoryID').val(),
         color: $('#searchColorID').val(),
-        size: $('#searchSizeID').val()
-    };
+        query: {
+            category: req.query.category, 
+            color: req.query.color
+        } 
+    }
+} else if (categoryVar == null && colorVar == 'Choose...' && sizeVar !== 'Choose...') {
+    console.log('Missing: Category and Color');
+    searchData = {
+        sizeVar: $('#searchSizeID').val(),
+        query: {
+            sizeVar: req.query.size
+        } 
+    }
+} else if (categoryVar == null && sizeVar == 'Choose...' && colorVar !== 'Choose...') {
+    console.log('Missing: Category and Size');
+    searchData = {
+        colorVar: $('#searchColorID').val(),
+        query: {
+            colorVar: req.query.color
+        } 
+    }
+} else if (categoryVar !== null && sizeVar == 'Choose...' && colorVar == 'Choose...') {
+    console.log('Missing: Color and Size');
+    searchData = {
+        colorVar: $('#searchCategoryID').val(),
+        query: {
+            categoryVar: req.query.category
+        } 
+    }
+} else if (categoryVar !== null && sizeVar !== 'Choose...' && colorVar !== 'Choose...') {
+    console.log('All three inputs are valid');
+    searchData = {
+        category: $('#searchCategoryID').val(),
+        color: $('#searchColorID').val(),
+        size: $('#searchSizeID').val(),
+        query: {
+            category: req.query.category, 
+            color: req.query.color,
+            size: req.query.size
+        } 
+    }
+}
 
+    console.log("This is searchData: " + JSON.stringify(searchData));
+    
     $.ajax("/browse-lost-items", {
         type: 'GET',
         data: searchData
-    }).then(function() {
-        // console.log("Querying Lost Items...")
+    }).then(function(data) {
+    
     });
 };
 
@@ -51,6 +116,9 @@ function queryFoundItems() {
         type: 'GET',
         data: searchData
     }).then(function() {
+
+        // console.log("This is data: " + data);
+        // $('#hbsContainer').append('browse-results', {lostItems: data});
         // console.log("Querying Lost Items...")
     });
 };

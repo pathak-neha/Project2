@@ -34,19 +34,19 @@ router.get('/lost', function (req, res) {
 // });
 
 router.get('/browse-lost-items', function(req, res) {
-  console.log(req.query);
+  console.log('The request: ' + req.query);
+  var query = req.query.query;
   db.Lost.findAll({
-    where: {
-      // category: 'Electronics',
-      // // color: null,
-      // // size: null
-    }
+    // where: query 
   }).then(function(data) {
+    res.render('browse-results', {lostItems: data});
     console.log(data);
-    console.log('Querying the lost items now...')
-    res.render('browse', {lostItems: data});
+    console.log('Querying the lost items now...');
   });
 });
+
+
+
 
 router.get('/browse-found-items', function(req, res) {
   console.log(req.query);
