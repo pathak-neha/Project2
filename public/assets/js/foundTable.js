@@ -11,6 +11,7 @@ $(document).ready(function () {
     var location = $('.location').val();
     var description = $('.description').val();
     var claimed = false;
+    var uid = localStorage.getItem('user_id')
 
     $(document).on('submit', '#itemsEntry', submitLostItem);
 
@@ -30,11 +31,15 @@ $(document).ready(function () {
             color: color,
             location: location,
             description: description,
-            claimed: claimed
+            claimed: claimed,
+            UserId: uid
         });
     }
 
     function addNewItem(data) {
-        $.post("/api/lost", lost)
-      }
+        $.post("/api/lost", lost).then(function (res) {
+            console.log("token: " + res.token)
+            location.replace('/')
+        })
+    }
 })
