@@ -79,6 +79,7 @@ var router = express.Router();
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             email: req.body.email,
+            username:  req.body.firstname,
             password: req.body.password
         }).then(function (dbUser) {
             //console.log(err);
@@ -99,6 +100,7 @@ var router = express.Router();
                         id: dbUser.id,
                         firstName: dbUser.firstname,
                         lastName: dbUser.lastname,
+                        username: dbUser.firstname,
                         email: dbUser.email
                     });
                 });

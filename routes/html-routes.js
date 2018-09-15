@@ -18,35 +18,43 @@ var found = require('../models/found.js');
 var user = require('../models/user.js');
 
 
-  // lost route loads lost.html
+// lost route loads lost.html
 
-  router.get('/lost/auth', verifytoken, function(req, res) {
-    console.log(req.headers);
-    jwt.verify(req.token, 'secretkey', (err, authData) => {
-      if (err) {
-        res.json({
-          status: '403',
-          
+router.get('/lost/auth', verifytoken, function (req, res) {
+  console.log(req.headers);
+  jwt.verify(req.token, 'secretkey', (err, authData) => {
+    if (err) {
+      res.json({
+        status: '403',
+
       });
-      } else {
-          res.json({
-            status: '200',
-              message: 'Post created...',
-              authData
-          });
-          res.render('lost');
-      };
+    } else {
+      res.json({
+        status: '200',
+        message: 'Post created...',
+        authData
+      });
+      res.render('lost');
+    };
   });
-    //res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
-  });
+  //res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
+});
 
-    
+//Create all our routes and set up logic within those routes where required.
 router.get('/', function (req, res) {
-  res.render('home')
+  res.render('home');
+});
+
+router.get('/index', function (req, res) {
+  res.render('home');
+});
+
+router.get('/found', function (req, res) {
+  res.render('found')
 });
 
 router.get('/lost', function (req, res) {
-  res.render('found')
+  res.render('lost')
 });
 
 router.get('/browse-items', function (req, res) {
@@ -56,10 +64,12 @@ router.get('/browse-items', function (req, res) {
 router.get('/signIn', function (req, res) {
   res.render('signIn')
 });
-router.get('/ignUp', function (req, res) {
-  res.render('SignUp')
+
+router.get('/signUp', function (req, res) {
+  res.render('signUp')
 });
-  
+
+
 
 // Verify Token
 function verifytoken(req, res, next) {
@@ -68,18 +78,18 @@ function verifytoken(req, res, next) {
   const bearerHeader = req.headers['authorization'];
   //Check if bearer is undefined
   if (typeof bearerHeader !== 'undefined') {
-      // Split at the space
-      const bearer = bearerHeader.split(' ');
-      // Get token from array
-      const bearerToken = bearer[1];
-      //Set the token
-      req.token = bearerToken;
-      //next middleware
-      next();
+    // Split at the space
+    const bearer = bearerHeader.split(' ');
+    // Get token from array
+    const bearerToken = bearer[1];
+    //Set the token
+    req.token = bearerToken;
+    //next middleware
+    next();
 
   } else {
-      //Forbidden
-      res.sendStatus(403);
+    //Forbidden
+    res.sendStatus(403);
 
   }
 }

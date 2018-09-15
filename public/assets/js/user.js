@@ -112,6 +112,7 @@ function emailSignUpEntryBlurEvent() {
 function clickSingUpButtonListener() {
   $('#signUpButton').on('click', function (event) {
     event.preventDefault();
+    console.log("enter clickSingUpButtonListener");
     var signFirst = $('#exampleDropdownFormFirst').val().trim().toUpperCase();
     var signLast = $('#exampleDropdownFormLast').val().trim().toUpperCase();
     var signEmail = $('#exampleDropdownFormEmail3').val().trim().toLowerCase();
