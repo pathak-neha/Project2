@@ -45,6 +45,7 @@ router.get('/', function (req, res) {
   res.render('home');
 });
 
+
 router.get('/index', function (req, res) {
   res.render('home');
 });
@@ -58,7 +59,7 @@ router.get('/lost', function (req, res) {
 });
 
 router.get('/browse-items', function (req, res) {
-  res.render('lost')
+  res.render('browse')
 });
 
 router.get('/signIn', function (req, res) {

@@ -23,8 +23,8 @@ var subcategory = {
     Other: ["Must be clarified in item description section"]
 };
 
-function makeSubmenu(value) {
-  if (value.length == 0) document.getElementById('categorySelect').innerHTML = '<option></option>';
+    function makeSubmenu(value) {
+    if(value.length==0) document.getElementsById('categorySelect').innerHTML = '<option></option>';
     else {
         var categoryOptions = '';
         for (categoryId in subcategory[value]) {
@@ -43,4 +43,6 @@ function resetSelection() {
     document.getElementById('category').selectedIndex = 0;
     document.getElementById('categorySelect').selectedIndex = 0;
 };
+
+   
 

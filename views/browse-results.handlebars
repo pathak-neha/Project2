@@ -119,10 +119,7 @@
   </div>
         </div>
 
-
- 
- <div id="hbsContainer">
-     <!-- ///////////////////////////////Table appears here///////////////////////////////////////////////// -->
+<!-- ///////////////////////////////Table appears here///////////////////////////////////////////////// -->
  
     {{#each lostItems}}
     <div class="searchedLostItems">
@@ -139,22 +136,6 @@
         </p>
         {{/each}}
     </div>
- </div>
-    {{!-- {{#each lostItems}}
-    <div class="searchedLostItems">
-        <p>{{this.id}}. {{this.category}} {{this.subcategory}} {{this.size}} {{this.color}}
-            {{this.location}}  {{this.description}}
-        </p>
-        {{/each}}
-    </div>
-
-{{#each foundItems}}
-    <div class="searchedFoundItems">
-        <p>{{this.id}}. {{this.category}} {{this.subcategory}} {{this.size}} {{this.color}}
-            {{this.location}}  {{this.description}}
-        </p>
-        {{/each}}
-    </div> --}}
 
         <!-- ///////////////////////////////FOOTER///////////////////////////////////////////////// -->
         <!-- Footer -->
@@ -182,7 +163,7 @@
 
         </footer>
         <script>
-var subcategory = {
+            var subcategory = {
     Electronics: ['Mobile(apple)','Mobile(android)','laptop','tablet','earbuds/ headphones','computer accessories'],
     Wallet: ['Wallet only','Wallet with IDs','IDs only'],
     Clothing:['Shirt','Jacket','Pants','Skirt'],
@@ -211,5 +192,4 @@ var subcategory = {
     document.getElementById('category').selectedIndex = 0;
     document.getElementById('categorySelect').selectedIndex = 0;
     }
-
         </script>
