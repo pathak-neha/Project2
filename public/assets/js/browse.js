@@ -33,8 +33,8 @@ function queryLostItems() {
     var sizeVar = $('#searchSizeID').val()
     var subCategoryVar = $('#categorySelect').val()
 
-    if (categoryVar == null && colorVar !== 'Choose...'  && sizeVar !== 'Choose...'){
-        console.log('Missing: Category only')
+    if (categoryVar == null && subCategoryVar == null && colorVar !== 'Choose...'  && sizeVar !== 'Choose...'){
+        console.log('Missing: Category and Subcategory only')
         searchData = {
             color: $('#searchColorID').val(),
             size: $('#searchSizeID').val(),
