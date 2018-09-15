@@ -5,6 +5,7 @@
 // Dependencies
 // =============================================================
 var path = require('path');
+var jwt = require('jsonwebtoken');
 
 // Routes
 // =============================================================
@@ -28,9 +29,9 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
   });
 
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
-  });
+  // app.get('*', function(req, res) {
+  //   res.sendFile(path.join(__dirname, '../public/frontend/index.html'));
+  // });
 
   // found route loads found.html
   app.get('/found', function (req, res) {
@@ -38,9 +39,32 @@ module.exports = function (app) {
   });
 
   // lost route loads lost.html
-  app.get('/lost', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
+  app.get('/lost/auth', verifytoken, function(req, res) {
+    console.log(req.headers);
+    jwt.verify(req.token, 'secretkey', (err, authData) => {
+      if (err) {
+        res.json({
+          status: '403',
+          
+      });
+      } else {
+          res.json({
+            status: '200',
+              message: 'Post created...',
+              authData
+          });
+          res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
+      };
   });
+    //res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
+  });
+
+  app.get('/lost',function(req, res) {
+  
+   res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
+     
+  });
+    
 
   app.get('/browse-items', function(req, res) {
     res.sendFile(path.join(__dirname, '../public/frontend/browse.html'));
@@ -60,5 +84,29 @@ module.exports = function (app) {
   app.get('/users', function (req, res) {
     res.sendFile(path.join(__dirname, '../public/frontend/user-manager.html'));
   });
+  
 };
 
+// Verify Token
+function verifytoken(req, res, next) {
+  //Get auth header value
+  console.log(req.headers);
+  const bearerHeader = req.headers['authorization'];
+  //Check if bearer is undefined
+  if (typeof bearerHeader !== 'undefined') {
+      // Split at the space
+      const bearer = bearerHeader.split(' ');
+      // Get token from array
+      const bearerToken = bearer[1];
+      //Set the token
+      req.token = bearerToken;
+      //next middleware
+      next();
+
+  } else {
+      //Forbidden
+      res.sendStatus(403);
+
+  }
+
+}

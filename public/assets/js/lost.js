@@ -1,4 +1,15 @@
 // Connects to the Form for the lost item (Using categories table)
+$(document).ready(function () {
+    loadUserInfo();
+});
+loadUserInfo();
+function loadUserInfo(){
+    if (localStorage.session_token){
+    $('#firstName').val(localStorage.getItem("user_firstName"));
+    //$('#firstName').disabled();
+    //document.getElementById("firstName").disabled = true;
+    }
+}
 
 var subcategory = {
     Electronics: ['Mobile(apple)','Mobile(android)','laptop','tablet','earbuds/ headphones','computer accessories'],

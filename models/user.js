@@ -21,13 +21,13 @@ module.exports = function(sequelize, DataTypes) {
     //     len: [3, 15]
     //   }
     // },
-    // password: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [5, 15]
-    //   }
-    // },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [5, 15]
+      }
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
