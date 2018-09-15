@@ -84,7 +84,7 @@
             <label class='input-group-text' for='inputGroupSelect01'>Item Category</label>
           </div>
           <select class='custom-select' id='category' size='1' onchange='makeSubmenu(this.value)'>
-            <option value='' disabled selected>Choose Category</option>
+            <option value='' >Choose Category</option>
             <option>Electronics</option>
             <option>Wallet</option>
             <option>Clothing</option>
@@ -94,6 +94,7 @@
           </select>
 
           <select class='custom-select' id='categorySelect' size='1'>
+            <option value='' >Choose Subcategory</option>
             <option value='' disabled selected >Choose Subcategory</option>
             <option></option>
           </select>
@@ -174,7 +175,6 @@
       <a href='#'>Lost and Found</a>
     </div>
   </footer>
-
   <script>
    $("#userNames").show();
     $("#itemsEntry").hide();
