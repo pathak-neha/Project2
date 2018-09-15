@@ -33,20 +33,22 @@ app.use(express.static('public'));
 // Import routes and give the server access to them.
 var routes = require("./routes/html-routes");
 var apiroutes = require("./routes/lostfound-api-routes");
+var userroutes = require("./routes/user-api-routes");
+
 
 app.use(routes);
 app.use(apiroutes);
+app.use(userroutes);
 
 // Routes
 // =============================================================
-// require('./routes/html-routes.js')(app);
-// require('./routes/lostfound-api-routes.js')(app);
-// require('./routes/user-api-routes.js')(app);
+
+//require('./routes/user-api-routes.js')(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 // db.sequelize.sync({ force: true }).then(function() {
-  db.sequelize.sync().then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log('App listening on PORT ' + PORT);
   });
