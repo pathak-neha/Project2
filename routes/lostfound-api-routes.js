@@ -26,14 +26,22 @@ router.get('/browse-lost', function (req, res) {
 });
 
 router.post('/api/lost', function (req, res) {
-  // 
-  db.Lost.create(req.body).then(function(data){
-    res.json('lost',data)
+  db.Lost.create(req.body).then(function(results){
+    res.json(results)
   })
 });
 
 router.put('/api/lost/:id', function (req, res) {
-  
+  db.Lost.update({
+    claimed: true,
+    }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (results) {
+    res.json(results)
+    res.end();
+  })
 });
 
 // ---------- ROUTES FOR 'FOUND' TABLE 
@@ -50,11 +58,22 @@ router.get('/browse-found', function (req, res) {
 });
 
 router.post('/api/found', function (req, res) {
-  
+  db.Found.create(req.body).then(function(results){
+    res.json(results)
+  })
 });
 
 router.put('/api/found/:id', function (req, res) {
-  
+  db.Found.update({
+    claimed: true,
+    }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (results) {
+    res.json(results)
+    res.end();
+  })
 });
 
 // Export routes for server.js to use.
