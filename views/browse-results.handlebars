@@ -120,8 +120,61 @@
         </div>
 
 <!-- ///////////////////////////////Table appears here///////////////////////////////////////////////// -->
- 
-    {{#each lostItems}}
+  <table class="lostfoundTables" id="lostTableDisplay" style="width:100%">
+<h7>Lost Item Requests</h7>
+  <tr>
+    <th>Lost Item ID</th>
+    <th>Category</th> 
+    <th>Subcategory</th>
+    <th>Size</th>
+    <th>Color</th>
+    <th>Location</th>
+    <th>Description</th>
+    <th>Claim?</th>
+  </tr>
+  {{#each lostItems}}
+  <tr>
+    <td>{{this.id}}</td>
+    <td>{{this.category}}</td>
+    <td>{{this.subcategory}}</td>
+    <td>{{this.size}}</td>
+    <td>{{this.color}}</td>
+    <td>{{this.location}}</td>
+    <td>{{this.description}}</td>
+    <td><button>Claim</button></td>
+  </tr>
+{{/each}}
+</table>
+
+ <table class="lostfoundTables" id="foundTableDisplay" style="width:100%">
+     <h8>Items People Have Found</h8>
+  <tr>
+    <th>Lost Item ID</th>
+    <th>Category</th> 
+    <th>Subcategory</th>
+    <th>Size</th>
+    <th>Color</th>
+    <th>Location</th>
+    <th>Description</th>
+    <th>Claim?</th>
+  </tr>
+  {{#each foundItems}}
+  <tr>
+    <td>{{this.id}}</td>
+    <td>{{this.category}}</td>
+    <td>{{this.subcategory}}</td>
+    <td>{{this.size}}</td>
+    <td>{{this.color}}</td>
+    <td>{{this.location}}</td>
+    <td>{{this.description}}</td>
+    <td><button>Claim</button></td>
+  </tr>
+{{/each}}
+</table>
+
+
+
+    {{!-- {{#each lostItems}}
     <div class="searchedLostItems">
         <p>{{this.id}}. {{this.category}} {{this.subcategory}} {{this.size}} {{this.color}}
             {{this.location}}  {{this.description}}
@@ -135,7 +188,7 @@
             {{this.location}}  {{this.description}}
         </p>
         {{/each}}
-    </div>
+    </div> --}}
 
         <!-- ///////////////////////////////FOOTER///////////////////////////////////////////////// -->
         <!-- Footer -->
