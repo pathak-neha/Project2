@@ -32,10 +32,10 @@ app.use(express.static('public'));
 
 // Import routes and give the server access to them.
 var routes = require("./routes/html-routes");
-// var apiroutes = require("./routes/lostfound-api-routes");
+var apiroutes = require("./routes/lostfound-api-routes");
 
-// app.use(routes);
-// app.use(apiroutes);
+app.use(routes);
+app.use(apiroutes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
