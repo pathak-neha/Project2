@@ -29,12 +29,11 @@ router.get('/lost/auth', verifytoken, function (req, res) {
 
       });
     } else {
+     
       res.json({
         status: '200',
-        message: 'Post created...',
-        authData
+
       });
-      res.render('lost');
     };
   });
   //res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));

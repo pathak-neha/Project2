@@ -27,9 +27,6 @@ function randomIntFromInterval(min, max) {
 
 
 
-
-
-
 function clickLostButtonListener() {
   $('#lostItem').on('click', function (event) {
       

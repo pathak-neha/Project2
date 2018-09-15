@@ -65,7 +65,7 @@ function clickSingInButtonListener() {
       localStorage.setItem('session_token', res.token);
       localStorage.setItem('user_id', res.id);
       localStorage.setItem('user_firstName', res.firstName);
-      localStorage.setItem('user_lastname', res.lastName);
+      localStorage.setItem('user_lastName', res.lastName);
       localStorage.setItem('user_email', res.email);
       // Reload the page to get the updated list
      location.replace('/');

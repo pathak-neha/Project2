@@ -8,9 +8,10 @@ function loadUserInfo() {
         $('#firstName').val(localStorage.getItem("user_firstName"));
         $('#lastName').val(localStorage.getItem("user_lastName"));
         $('#exampleFormControlInput1').val(localStorage.getItem("user_email"));
-
-        //$('#firstName').disabled();
-        //document.getElementById("firstName").disabled = true;
+        //document.getElementById('firstName').disabled = true;
+       // document.getElementById('lastName').disabled = true;
+       // document.getElementById('exampleFormControlInput1').disabled = true;
+       
     }
 }
 
