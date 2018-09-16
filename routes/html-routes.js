@@ -61,12 +61,12 @@ router.get('/browse-items', function (req, res) {
   res.render('browse')
 });
 
-router.get('/signIn', function (req, res) {
-  res.render('signIn')
+router.get('/SignIn', function (req, res) {
+  res.render('SignIn')
 });
 
-router.get('/signUp', function (req, res) {
-  res.render('signUp')
+router.get('/SignUp', function (req, res) {
+  res.render('SignUp')
 });
 
 router.get("*", function (req, res) {
