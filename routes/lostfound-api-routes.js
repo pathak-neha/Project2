@@ -21,7 +21,11 @@ router.get('/lost', function (req, res) {
 });
 
 router.get('/browse-lost-items-result', function(req, res) {
-  res.render('browse-results', {lostItems: globalData})
+  res.render('browse-results', {lostItems: globalData});
+});
+
+router.get('/browse-found-items-result', function(req, res) {
+  res.render('browse-results', {foundItems: globalData});
 });
 
 router.get('/browse-lost-items', function (req, res) {
@@ -37,7 +41,7 @@ router.get('/browse-lost-items', function (req, res) {
 
 router.get('/browse-found-items', function (req, res) {
   console.log('The request/req.query: ' + JSON.stringify(req.query));
-  db.Lost.findAll({
+  db.Found.findAll({
     where: req.query
   }).then(function (data) {
     globalData = data;
@@ -47,7 +51,7 @@ router.get('/browse-found-items', function (req, res) {
 });
 
 router.post('/api/lost', function (req, res) {
-  // 
+
   db.Lost.create(req.body).then(function (data) {
     res.json('lost', data)
   })
