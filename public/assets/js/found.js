@@ -6,11 +6,12 @@ $(document).ready(function(){
 
 $("#enterFoundItems").click(function(){
     event.preventDefault();
-    $("#userNames").hide();
     $("#itemsEntry").show();
     $("#submitItems").show();
     
 });
+
+
 var subcategory = {
     Electronics: ['Mobile(apple)','Mobile(android)','laptop','tablet','earbuds/ headphones','computer accessories'],
     Wallet: ['Wallet only','Wallet with IDs','IDs only'],

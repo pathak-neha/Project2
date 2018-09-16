@@ -83,6 +83,7 @@ function emailSignUpEntryBlurEvent() {
       $('#email-enter-error').text("Email canot be blank, Please ReEnter");
       $('#exampleDropdownFormEmail3').focus();
     }
+    
     else {
       $('#email-enter-error').text("");
      
@@ -140,6 +141,11 @@ function clickSingUpButtonListener() {
     if (signPass.trim() === '') {
       validated=false;
       $('#pass-enter-error').text("Password can not be blank, Please ReEnter");
+      $('#exampleDropdownFormPassword4').focus();
+    }
+    if (signPass.trim().length <6) {
+      validated=false;
+      $('#pass-enter-error').text("Password should be minimum 6 characters long, Please ReEnter");
       $('#exampleDropdownFormPassword4').focus();
     }
     // Send the login posts

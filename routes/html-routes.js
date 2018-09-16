@@ -20,7 +20,7 @@ var user = require('../models/user.js');
 
 // lost route loads lost.html
 
-router.get('/lost/auth', verifytoken, function (req, res) {
+router.get('/auth', verifytoken, function (req, res) {
   console.log(req.headers);
   jwt.verify(req.token, 'secretkey', (err, authData) => {
     if (err) {
@@ -95,4 +95,5 @@ function verifytoken(req, res, next) {
 
   }
 }
+
 module.exports = router;

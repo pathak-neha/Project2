@@ -3,17 +3,7 @@ $(document).ready(function () {
     loadUserInfo();
 });
 
-function loadUserInfo() {
-    if (localStorage.session_token) {
-        $('#firstName').val(localStorage.getItem("user_firstName"));
-        $('#lastName').val(localStorage.getItem("user_lastName"));
-        $('#exampleFormControlInput1').val(localStorage.getItem("user_email"));
-        //document.getElementById('firstName').disabled = true;
-       // document.getElementById('lastName').disabled = true;
-       // document.getElementById('exampleFormControlInput1').disabled = true;
-       
-    }
-}
+
 
 var subcategory = {
     Electronics: ['Mobile(apple)', 'Mobile(android)', 'laptop', 'tablet', 'earbuds/ headphones', 'computer accessories'],

@@ -54,7 +54,7 @@ var router = express.Router();
                 var user = dbUser.username;
                 console.log("user in api: " + user);
 
-                jwt.sign({ user }, 'secretkey', { expiresIn: '60s' }, (err, token) => {
+                jwt.sign({ user }, 'secretkey', { expiresIn: '15s' }, (err, token) => {
                     // token+=("_"+dbUser.id);
                     console.log("token: " + token);
                     res.json({
@@ -91,7 +91,7 @@ var router = express.Router();
                 var user = dbUser.username;
                 console.log("user in api: " + user);
 
-                jwt.sign({ user }, 'secretkey', { expiresIn: '60s' }, (err, token) => {
+                jwt.sign({ user }, 'secretkey', { expiresIn: '15s' }, (err, token) => {
                     // token+=("_"+dbUser.id);
                     console.log("token: " + token);
                     res.json({
