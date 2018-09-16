@@ -99,5 +99,7 @@ function loadUserInfo() {
     // document.getElementById('lastName').disabled = true;
     // document.getElementById('exampleFormControlInput1').disabled = true;
 
+  }else{
+    $('.notSignedMessage').text('Please Sign up or Sign in if you have account set-up');
   }
 };

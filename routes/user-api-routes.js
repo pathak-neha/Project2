@@ -1,6 +1,9 @@
 var db = require('../models');
 var jwt = require('jsonwebtoken');
 var sendmail = require("../sendEmail.js");
+var sendsms = require("../sendSMS.js");
+
+
 
 var express = require('express');
 var router = express.Router();
@@ -18,7 +21,6 @@ var router = express.Router();
             };
         });
     });
-
 
     router.post('/api/emailValidate', (req, res) => {
         console.log("req.body.email: " + req);
@@ -86,11 +88,9 @@ var router = express.Router();
 
             if (dbUser !== null) {
                 sendEmailToNewUser(dbUser.email,dbUser.firstname,dbUser.password);
-               
-
-                var user = dbUser.username;
+                 var user = dbUser.username;
                 console.log("user in api: " + user);
-
+                sendSMS(dbUser.email,dbUser.firstname,dbUser.password);
                 jwt.sign({ user }, 'secretkey', { expiresIn: '15s' }, (err, token) => {
                     // token+=("_"+dbUser.id);
                     console.log("token: " + token);
@@ -127,6 +127,18 @@ var router = express.Router();
 
     // Format of token
     //Authorization: Bearer <access_token>
+    function sendSMS(email, firstName,password){
+        var phoneNumber = "14165709944";
+        var message = 'Hello '+firstName+',\n'+'Welcom to Lost and Found App\n'+'Registration to Lost and Found app is successful\n' +'You can log in by below credentials:\n'
+        +'Username: '+email+'\n'
+        +'Password: '+password+'\n'
+        +'\n'
+        +'Regards,\n'
+        +'Lost and Found Development Team'
+        var emailSubject = firstName+' Welcome to Lost and Found App'
+        var messageType = "ARN";
+        var newsendSMS = new sendsms(phoneNumber,message,messageType);
+    };
 
     // Verify Token
     function verifytoken(req, res, next) {
