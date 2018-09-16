@@ -37,7 +37,10 @@ $(document).ready(function () {
     }
 
     function addNewItem(data) {
-        $.post("/api/lost", lost).then(function (res) {
+        $.ajax("/api/lost", {
+            type: 'POST',
+            data: data
+        }).then(function (res) {
             console.log("token: " + res.token)
             location.replace('/')
         })

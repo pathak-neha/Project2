@@ -1,41 +1,40 @@
-
 <!-- ////////////////////////HEADER////////////////////////////////// -->
-  <div class='card text-center text-white bg-danger'>
-    <div class='card-header'>
+<div class='card text-center text-white bg-danger'>
+  <div class='card-header'>
 
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class='navbar-nav mr-auto nav nav-tabs collapse navbar-collapse card-header-tabs'>
-                    <li class='nav-item'>
-          <a class='nav-link ' href='index'>Home</a>
-        </li>
-        <li class='nav-item'>
-          <a class='nav-link ' href='SignIn'>Sign In</a>
-        </li>
-        <li class='nav-item'>
-          <a class='nav-link' href='SignUp'>Sign Up</a>
-        </li>
-        <li class='nav-item'>
-          <a class='nav-link active' href='lost'>Report Lost Item</a>
-        </li>
-        <li class='nav-item'>
-          <a class='nav-link ' href='found'>Report Found Item</a>
-        </li>
-        <li class='nav-item'>
-          <a class='nav-link' href='browse-items'>Browse Lost and Found Items</a>
-        </li>
-      </ul>
-      <br>
-      <form class="form-inline">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class='navbar-nav mr-auto nav nav-tabs collapse navbar-collapse card-header-tabs'>
+          <li class='nav-item'>
+            <a class='nav-link ' href='index'>Home</a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link ' href='SignIn'>Sign In</a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link' href='SignUp'>Sign Up</a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link active' href='lost'>Report Lost Item</a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link ' href='found'>Report Found Item</a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link' href='browse-items'>Browse Lost and Found Items</a>
+          </li>
+        </ul>
+        <br>
+        <form class="form-inline">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-      </form>
-</nav>
+        </form>
+    </nav>
     </div>
     <!-- /////////////////////////////////////////////////////////////// -->
     <div class='container'>
@@ -47,20 +46,22 @@
         <hr>
       </div>
 
-      
-        <!-- ////////////////////////////First and last name and Email Address///////////////////////////////////////// -->
-        <form id="userNames">  
+
+      <!-- ////////////////////////////First and last name and Email Address///////////////////////////////////////// -->
+      <form id="userNames">
         <div class='input-group'>
           <div class='input-group-prepend'>
             <span class='input-group-text' id=''>First Name</span>
           </div>
           <input type='text' class='form-control'>
-          <br><br>
+          <br>
+          <br>
           <div class='input-group-prepend'>
             <span class='input-group-text' id=''>Last Name</span>
           </div>
           <input type='text' class='form-control'>
-          <br><br>
+          <br>
+          <br>
         </div>
         <br>
         <div class='input-group'>
@@ -75,16 +76,16 @@
         <div class='container'>
           <button id="enterLostItems" type='button' class='btn btn-primary btn-lg btn-block'>Enter to Add Lost Item</button>
         </div>
-        </form>
-<br>
-        <!-- ///////////////////////////////Item Category///////////////////////////////////////////// -->
-        <form id="itemsEntry">
+      </form>
+      <br>
+      <!-- ///////////////////////////////Item Category///////////////////////////////////////////// -->
+      <form id="itemsEntry">
         <div class='input-group mb-3'>
           <div class='input-group-prepend'>
             <label class='input-group-text' for='inputGroupSelect01'>Item Category</label>
           </div>
           <select class='custom-select' id='category' size='1' onchange='makeSubmenu(this.value)'>
-            <option value='' >Choose Category</option>
+            <option value=''>Choose Category</option>
             <option>Electronics</option>
             <option>Wallet</option>
             <option>Clothing</option>
@@ -94,8 +95,8 @@
           </select>
 
           <select class='custom-select' id='categorySelect' size='1'>
-            <option value='' >Choose Subcategory</option>
-            <option value='' disabled selected >Choose Subcategory</option>
+            <option value=''>Choose Subcategory</option>
+            <option value='' disabled selected>Choose Subcategory</option>
             <option></option>
           </select>
         </div>
@@ -155,7 +156,7 @@
         <!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
     </div>
     <div class='container'>
-      <button id="submitItems" type='button' class='btn btn-primary btn-lg btn-block'>SUBMIT</button>
+      <button id="submitItems" type='submit' class='btn btn-primary btn-lg btn-block'>SUBMIT</button>
     </div>
     </form>
     <br>
@@ -165,9 +166,15 @@
 
     <div class='container-fluid text-center'>
       <ul class='list-inline'>
-        <li class='list-inline-item'><a href='index'>Home</a></li>
-        <li class='list-inline-item'><a href='lost'>Lost Report</a></li>
-        <li class='list-inline-item'><a href='found'>Found Report</a></li>
+        <li class='list-inline-item'>
+          <a href='index'>Home</a>
+        </li>
+        <li class='list-inline-item'>
+          <a href='lost'>Lost Report</a>
+        </li>
+        <li class='list-inline-item'>
+          <a href='found'>Found Report</a>
+        </li>
       </ul>
     </div>
 
@@ -176,46 +183,46 @@
     </div>
   </footer>
   <script>
-   $("#userNames").show();
+    $("#userNames").show();
     $("#itemsEntry").hide();
     $("#submitItems").hide();
 
-$("#enterLostItems").click(function(){
-    event.preventDefault();
-    $("#userNames").hide();
-    $("#itemsEntry").show();
-    $("#submitItems").show();
-    
-});
+    $("#enterLostItems").click(function () {
+      event.preventDefault();
+      $("#userNames").hide();
+      $("#itemsEntry").show();
+      $("#submitItems").show();
 
-var subcategory = {
-    Electronics: ['Mobile(apple)','Mobile(android)','laptop','tablet','earbuds/ headphones','computer accessories'],
-    Wallet: ['Wallet only','Wallet with IDs','IDs only'],
-    Clothing:['Shirt','Jacket','Pants','Skirt'],
-    Accessories:['Shoes','Hat','Scarf','Mittens/ Gloves','Jewellery/ Watches','Bag/ Purse/ Case'],
-    Documents:['Book','Notes'],
-    Other:["Must be clarified in item description section"]
+    });
+
+    var subcategory = {
+      Electronics: ['Mobile(apple)', 'Mobile(android)', 'laptop', 'tablet', 'earbuds/ headphones', 'computer accessories'],
+      Wallet: ['Wallet only', 'Wallet with IDs', 'IDs only'],
+      Clothing: ['Shirt', 'Jacket', 'Pants', 'Skirt'],
+      Accessories: ['Shoes', 'Hat', 'Scarf', 'Mittens/ Gloves', 'Jewellery/ Watches', 'Bag/ Purse/ Case'],
+      Documents: ['Book', 'Notes'],
+      Other: ["Must be clarified in item description section"]
     };
 
     function makeSubmenu(value) {
-    if(value.length==0) document.getElementById('categorySelect').innerHTML = '<option></option>';
-    else {
-    var categoryOptions = '';
-    for(categoryId in subcategory[value]) {
-        categoryOptions+='<option>'+subcategory[value][categoryId]+'</option>';
+      if (value.length == 0) document.getElementById('categorySelect').innerHTML = '<option></option>';
+      else {
+        var categoryOptions = '';
+        for (categoryId in subcategory[value]) {
+          categoryOptions += '<option>' + subcategory[value][categoryId] + '</option>';
+        }
+        document.getElementById('categorySelect').innerHTML = categoryOptions;
+      }
     }
-    document.getElementById('categorySelect').innerHTML = categoryOptions;
-    }
-    }
-     // function displaySelected() {
-        
+    // function displaySelected() {
+
     // var category = document.getElementById('category').value;
     // var item = document.getElementById('subCategory').value;
     // alert(category+'\n'+item);
     // }
     function resetSelection() {
-    document.getElementById('category').selectedIndex = 0;
-    document.getElementById('categorySelect').selectedIndex = 0;
+      document.getElementById('category').selectedIndex = 0;
+      document.getElementById('categorySelect').selectedIndex = 0;
     }
   </script>
   <!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
