@@ -162,21 +162,77 @@
     </form>
     <br>
   </div>
-  <!-- ///////////////////////////////FOOTER///////////////////////////////////////////////// -->
-  <footer class='page-footer font-small blue pt-4' style='text-align: center'>
+  {{!-- ///////////////////////////////////////Modal////////////////////////////////////////// --}}
+  
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Developer Team Members - Coding Bootcamp-Project 2-University of Toronto</h5>
+                </h5>
 
-    <div class='container-fluid text-center'>
-      <ul class='list-inline'>
-        <li class='list-inline-item'><a href='index'>Home</a></li>
-        <li class='list-inline-item'><a href='lost'>Report an Item You Lost</a></li>
-        <li class='list-inline-item'><a href='found'>Report an Item You Found</a></li>
-      </ul>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 ml-auto">
+                                <!-- ////////////////////First Profile///////////////// -->
+                                <img src="/assets/img/Aboozar-Mojdeh.jpg" alt="..." class="img-thumbnail">
+                                <a href="https://github.com/aboozarmojdeh" target="_blank">Aboozar Mojdeh</a>
+                            </div>
+                            <hr>
+                            <!-- ////////////////////Second Profile///////////////// -->
+                            <div class="col-md-6 ml-auto">
+                                <img src="/assets/img/Sujata-Jhavery.png" alt="..." class="img-thumbnail">
+                                <a href="https://github.com/Sujata1" target="_blank">Sujata Jhavery</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 ml-auto">
+                                <!-- ////////////////////Third Profile///////////////// -->
+                                <img src="/assets/img/Neha-Pathak.jpg" alt="..." class="img-thumbnail">
+                                <a href="https://github.com/pathak-neha" target="_blank">Neha Pathak</a>
+                            </div>
+                            <div class="col-md-6 ml-auto">
+                                <!-- ////////////////////Fourth Profile///////////////// -->
+                                <img src="/assets/img/Karen-Kua.jpg" alt="..." class="img-thumbnail">
+                                <a href="https://github.com/azukimochi" target="_blank">Karen Kua</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class='footer-copyright text-center py-3'>© 2018 Copyright:
-      <a href='#'>Lost and Found</a>
-    </div>
-  </footer>
+
+{{!-- /////////////////////////////////////////////////////////////////////////////////////// --}}
+    <!-- ///////////////////////////////FOOTER///////////////////////////////////////////////// -->
+    <footer class='page-footer font-small blue pt-4' style='text-align: center'>
+
+        <div class='container-fluid text-center'>
+            <ul class='list-inline'>
+                <li class='list-inline-item'><a href='index'>Home</a></li>
+                <li class='list-inline-item'><a href='lost'>Lost Report</a></li>
+                <li class='list-inline-item'><a href='found'>Found Report</a></li>
+            </ul>
+        </div>
+
+        <div class='footer-copyright text-center py-3'>© 2018 Copyright:
+            <a a href="https://github.com/aboozarmojdeh" target="_blank" data-toggle="modal" data-target=".bd-example-modal-lg"> Lost and Found</a>
+        </div>
+    </footer>
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
+ 
+ 
+ 
   <script>
     $("#userNames").show();
     $("#itemsEntry").hide();
