@@ -112,6 +112,7 @@ var router = express.Router();
         });
     });
 
+
     function sendEmailToNewUser(email, firstName,password){
         var emailBody = 'Hello '+firstName+',\n'+'Welcom to Lost and Found App\n'+'Registration to Lost and Found app is successful\n' +'You can log in by below credentials:\n'
         +'Username: '+email+'\n'

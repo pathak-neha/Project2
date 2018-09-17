@@ -1,12 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var Lost = sequelize.define('Lost', {
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true
-      }
-    },
     category: {
       type: DataTypes.STRING,
       allowNull: false

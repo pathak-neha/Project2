@@ -11,9 +11,51 @@ var router = express.Router();
 // Import the model to use its database functions.
 var db = require('../models')
 var globalData;
+var idData =[];
+var idQuery;
 
 // Create all our routes and set up logic within those routes where required.
 // ---------- ROUTES FOR 'LOST' TABLE 
+
+
+router.get('/browse-by-id', function(req, res) {
+  console.log(req.query);
+  idQuery = req.query;
+  db.Lost.findAll({
+    where: {
+      id: req.query.id,
+      claimed: 0
+    }
+  }).then(function(data) {
+    console.log("Query: " + idQuery);
+    console.log("Lost Data: " + JSON.stringify(data));
+    idData.push(data);
+    db.Found.findAll({
+      where: {
+        id: idQuery.id,
+        claimed: 0
+      }
+    }).then(function(result) {
+      console.log("Found Data: " + JSON.stringify(result));
+      idData.push(result);
+      console.log("global Data: " + JSON.stringify(idData));
+    })
+    console.log('Querying the ID')
+  })
+});
+
+
+
+// router.get('/lost', function (req, res) {
+//   db.Lost.findAll({ include: db.User }).then(function (data) {
+//     res.render('lost', data)
+//   })
+// });
+
+router.get('/browse-by-id-result', function(req, res) {
+  res.render('browse-results', {lostItems: idData[0], foundItems: idData[1]});
+});
+
 router.get('/lost', function (req, res) {
   db.Lost.findAll({ include: db.User }).then(function (data) {
     res.render('lost', data)
@@ -51,14 +93,22 @@ router.get('/browse-found-items', function (req, res) {
 });
 
 router.post('/api/lost', function (req, res) {
-
-  db.Lost.create(req.body).then(function (data) {
-    res.json('lost', data)
+  db.Lost.create(req.body).then(function(results){
+    res.json(results)
   })
 });
 
 router.put('/api/lost/:id', function (req, res) {
-
+  db.Lost.update({
+    claimed: true,
+    }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (results) {
+    res.json(results)
+    res.end();
+  })
 });
 
 // ---------- ROUTES FOR 'FOUND' TABLE 
@@ -75,11 +125,22 @@ router.get('/browse-found', function (req, res) {
 });
 
 router.post('/api/found', function (req, res) {
-
+  db.Found.create(req.body).then(function(results){
+    res.json(results)
+  })
 });
 
 router.put('/api/found/:id', function (req, res) {
-
+  db.Found.update({
+    claimed: true,
+    }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (results) {
+    res.json(results)
+    res.end();
+  })
 });
 
 // Export routes for server.js to use.

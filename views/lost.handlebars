@@ -20,10 +20,10 @@
             <a class='nav-link' href='SignUp'>Sign Up</a>
           </li>
           <li class='nav-item'>
-            <a class='nav-link lostItem' href='#'>Report Lost Item</a>
+            <a class='nav-link active' href='lost'>Report Lost Item</a>
           </li>
           <li class='nav-item'>
-            <a class='nav-link foundItem' href='#'>Report Found Item</a>
+            <a class='nav-link ' href='found'>Report Found Item</a>
           </li>
           <li class='nav-item'>
             <a class='nav-link' href='browse-items'>Browse Lost and Found Items</a>
@@ -31,8 +31,8 @@
         </ul>
         <br>
         <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+          <input id="searchBarInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button id="searchBarBtn" class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
     </nav>
     </div>
@@ -56,13 +56,15 @@
           <div class='input-group-prepend'>
             <span class='input-group-text' id='' value=''>First Name</span>
           </div>
-          <input type='text' id='firstName' class='form-control'>
-          <br><br>
+          <input type='text' class='form-control'>
+          <br>
+          <br>
           <div class='input-group-prepend'>
             <span class='input-group-text' id=''>Last Name</span>
           </div>
-          <input type='text' id='lastName' class='form-control'>
-          <br><br>
+          <input type='text' class='form-control'>
+          <br>
+          <br>
         </div>
         <br>
         <div class='input-group'>
@@ -104,85 +106,131 @@
         <!-- ///////////////////////////////Size///////////////////////////////////////////// -->
         <div class='input-group mb-3'>
           <div class='input-group-prepend'>
-            <label class='input-group-text' for='inputGroupSelect01'>Size</label>
+            <label class='input-group-text'>Size</label>
           </div>
-          <select class='custom-select' id='inputGroupSelect01'>
-            <option selected>Choose...</option>
-            <option value='Small (30cm and under)'>Small (30cm and under)</option>
-            <option value='Medium (Larger than 30cm)'>Medium (Larger than 30cm)</option>
-            <option value='Large (Larger than 60cm)'>Large (Larger than 60cm)</option>
+          <select class='custom-select' id='size'>
+            <option value="Small (30cm and under)">Small (30cm and under)</option>
+            <option value="Medium (Larger than 30cm)">Medium (Larger than 30cm)</option>
+            <option value="Large (Larger than 60cm)">Large (Larger than 60cm)</option>
           </select>
         </div>
         <!-- ///////////////////////////////Color///////////////////////////////////////////// -->
         <div class='input-group mb-3'>
           <div class='input-group-prepend'>
-            <label class='input-group-text' for='inputGroupSelect01'>Color</label>
+          <label class='input-group-text' >Color</label>
           </div>
-          <select class='custom-select' id='inputGroupSelect01'>
-            <option selected>Choose...</option>
-          <option value='Red'>Red</option>
-          <option value='Blue'>Blue</option>
-          <option value='Green'>Green</option>
-          <option value='Yellow'>Yellow</option>
-          <option value='Orange'>Orange</option>
-          <option value='Purple'>Purple</option>
-          <option value='White'>White</option>
-          <option value='Black'>Black</option>
-          <option value='Grey'>Grey</option>
-          <option value='Pink'>Pink</option>
-          <option value='Brown'>Brown</option>
-          <option value='Mix of colors'>Mix of many colors</option>
+          <select class='custom-select' id='color'>
+          <option value="Red">Red</option>
+          <option value="Blue">Blue</option>
+          <option value="Green">Green</option>
+          <option value="Yellow">Yellow</option>
+          <option value="Orange">Orange</option>
+          <option value="Purple">Purple</option>
+          <option value="White">White</option>
+          <option value="Black">Black</option>
+          <option value="Grey">Grey</option>
+          <option value="Pink">Pink</option>
+          <option value="Brown">Brown</option>
+          <option value="Mix of many colors">Mix of many colors</option>
           </select>
         </div>
-        <!-- //////////////////////////////////////////////////////////////////////////////// -->
-        <div class='input-group mb-3'>
-          <div class='input-group-prepend'>
-            <span class='input-group-text'>Lost Item Photo</span>
-          </div>
-          <div class='custom-file'>
-            <input type='file' class='custom-file-input' id='inputGroupFile01'>
-            <label class='custom-file-label' for='inputGroupFile01'>Choose file</label>
-          </div>
+        <!-- //////////////////////////////////////////////////////////////////////////////////// -->
+        <div class='form-group'>
+          <label>Lost Location</label>
+          <textarea class='form-control' id='location' rows='1' placeholder='Start Typing the Address Here'></textarea>
         </div>
         <!-- //////////////////////////////////////////////////////////////////////////////////// -->
         <div class='form-group'>
-          <label for='exampleFormControlTextarea1'>Lost Location</label>
-          <textarea class='form-control' id='exampleFormControlTextarea1' rows='1' placeholder='ZIP code or Address'></textarea>
-        </div>
-        <!-- //////////////////////////////////////////////////////////////////////////////////// -->
-        <div class='form-group'>
-          <label for='exampleFormControlTextarea1'>Item Description</label>
-          <textarea class='form-control' id='exampleFormControlTextarea1' rows='1' placeholder='Wallet including IDs, Debit and Credit Cards'></textarea>
+          <label>Item Description</label>
+          <textarea class='form-control' id='description' rows='1' placeholder='Example: Wallet including IDs, Debit and Credit Cards'></textarea>
         </div>
         <!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
     </div>
     <div class='container'>
-      <button id="submitItems" type='button' class='btn btn-primary btn-lg btn-block'>SUBMIT</button>
+      <button id="submitItems" type='submit' class='btn btn-primary btn-lg btn-block'>SUBMIT</button>
     </div>
     </form>
     <br>
   </div>
-  <!-- ///////////////////////////////FOOTER///////////////////////////////////////////////// -->
-  <footer class='page-footer font-small blue pt-4' style='text-align: center'>
+  {{!-- ///////////////////////////////////////Modal////////////////////////////////////////// --}}
+  
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Developer Team Members - Coding Bootcamp-Project 2-University of Toronto</h5>
+                </h5>
 
-    <div class='container-fluid text-center'>
-      <ul class='list-inline'>
-        <li class='list-inline-item'><a href='index'>Home</a></li>
-        <li class='list-inline-item'><a href='lost'>Lost Report</a></li>
-        <li class='list-inline-item'><a href='found'>Found Report</a></li>
-      </ul>
-    </div>
-
-    <div class='footer-copyright text-center py-3'>© 2018 Copyright:
-      <a href='#'>Lost and Found</a>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 ml-auto">
+                                <!-- ////////////////////First Profile///////////////// -->
+                                <img src="/assets/img/Aboozar-Mojdeh.jpg" alt="..." class="img-thumbnail">
+                                <a href="https://github.com/aboozarmojdeh" target="_blank">Aboozar Mojdeh</a>
+                            </div>
+                            <hr>
+                            <!-- ////////////////////Second Profile///////////////// -->
+                            <div class="col-md-6 ml-auto">
+                                <img src="/assets/img/Sujata-Jhavery.png" alt="..." class="img-thumbnail">
+                                <a href="https://github.com/Sujata1" target="_blank">Sujata Jhavery</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 ml-auto">
+                                <!-- ////////////////////Third Profile///////////////// -->
+                                <img src="/assets/img/Neha-Pathak.jpg" alt="..." class="img-thumbnail">
+                                <a href="https://github.com/pathak-neha" target="_blank">Neha Pathak</a>
+                            </div>
+                            <div class="col-md-6 ml-auto">
+                                <!-- ////////////////////Fourth Profile///////////////// -->
+                                <img src="/assets/img/Karen-Kua.jpg" alt="..." class="img-thumbnail">
+                                <a href="https://github.com/azukimochi" target="_blank">Karen Kua</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
   </footer>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByKeaQmLeI9WrlUZqt0-cCDR6KkXpskiw&libraries=places&callback=activateSearch" async defer></script>
+
+
+{{!-- /////////////////////////////////////////////////////////////////////////////////////// --}}
+    <!-- ///////////////////////////////FOOTER///////////////////////////////////////////////// -->
+    <footer class='page-footer font-small blue pt-4' style='text-align: center'>
+
+        <div class='container-fluid text-center'>
+            <ul class='list-inline'>
+                <li class='list-inline-item'><a href='index'>Home</a></li>
+                <li class='list-inline-item'><a href='lost'>Lost Report</a></li>
+                <li class='list-inline-item'><a href='found'>Found Report</a></li>
+            </ul>
+        </div>
+
+        <div class='footer-copyright text-center py-3'>© 2018 Copyright:
+            <a a href="https://github.com/aboozarmojdeh" target="_blank" data-toggle="modal" data-target=".bd-example-modal-lg"> Lost and Found</a>
+        </div>
+    </footer>
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
+ 
+ 
+ 
   <script>
     $("#userNames").show();
     $("#itemsEntry").hide();
     $("#submitItems").hide();
 
-    $("#enterLostItems").click(function () {
+    $("#enterLostItems").click(function (event) {
       event.preventDefault();
       $("#itemsEntry").show();
       $("#submitItems").show();
