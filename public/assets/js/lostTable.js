@@ -18,7 +18,9 @@ $(document).ready(function () {
     function submitLostItem(event) {
         event.preventDefault();
         console.log('hi')
-        if err throw err;
+        if (error) {
+            throw err
+        };
         if (!category) {
             return;
         } else {
