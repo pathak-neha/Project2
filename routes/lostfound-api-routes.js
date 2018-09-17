@@ -11,9 +11,51 @@ var router = express.Router();
 // Import the model to use its database functions.
 var db = require('../models')
 var globalData;
+var idData =[];
+var idQuery;
 
 // Create all our routes and set up logic within those routes where required.
 // ---------- ROUTES FOR 'LOST' TABLE 
+
+
+router.get('/browse-by-id', function(req, res) {
+  console.log(req.query);
+  idQuery = req.query;
+  db.Lost.findAll({
+    where: {
+      id: req.query.id,
+      claimed: 0
+    }
+  }).then(function(data) {
+    console.log("Query: " + idQuery);
+    console.log("Lost Data: " + JSON.stringify(data));
+    idData.push(data);
+    db.Found.findAll({
+      where: {
+        id: idQuery.id,
+        claimed: 0
+      }
+    }).then(function(result) {
+      console.log("Found Data: " + JSON.stringify(result));
+      idData.push(result);
+      console.log("global Data: " + JSON.stringify(idData));
+    })
+    console.log('Querying the ID')
+  })
+});
+
+
+
+// router.get('/lost', function (req, res) {
+//   db.Lost.findAll({ include: db.User }).then(function (data) {
+//     res.render('lost', data)
+//   })
+// });
+
+router.get('/browse-by-id-result', function(req, res) {
+  res.render('browse-results', {lostItems: idData[0], foundItems: idData[1]});
+});
+
 router.get('/lost', function (req, res) {
   db.Lost.findAll({ include: db.User }).then(function (data) {
     res.render('lost', data)

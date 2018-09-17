@@ -1,5 +1,25 @@
 $(document).ready(function () {
 
+    $('#searchBarBtn').on('click', function() {
+        event.preventDefault();
+        setTimeout(displayIDResults, 1000);
+        console.log('Search Bar Input: ' + $('#searchBarInput').val().trim());
+        var idObj = {
+            id: $('#searchBarInput').val().trim()
+        }
+        browseID(idObj);
+    });
+    
+    
+    function browseID(idObj) {
+        $.ajax("/browse-by-id", {
+            type: 'GET',
+            data: idObj
+        }).then(function (data) {
+        });
+
+    };
+    
     $('#searchBtn').on('click', function () {
         event.preventDefault();
         getInputValues();
