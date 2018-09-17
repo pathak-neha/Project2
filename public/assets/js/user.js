@@ -65,7 +65,7 @@ function clickSingInButtonListener() {
       localStorage.setItem('session_token', res.token);
       localStorage.setItem('user_id', res.id);
       localStorage.setItem('user_firstName', res.firstName);
-      localStorage.setItem('user_lastname', res.lastName);
+      localStorage.setItem('user_lastName', res.lastName);
       localStorage.setItem('user_email', res.email);
       // Reload the page to get the updated list
      location.replace('/');
@@ -83,6 +83,7 @@ function emailSignUpEntryBlurEvent() {
       $('#email-enter-error').text("Email canot be blank, Please ReEnter");
       $('#exampleDropdownFormEmail3').focus();
     }
+    
     else {
       $('#email-enter-error').text("");
      
@@ -140,6 +141,11 @@ function clickSingUpButtonListener() {
     if (signPass.trim() === '') {
       validated=false;
       $('#pass-enter-error').text("Password can not be blank, Please ReEnter");
+      $('#exampleDropdownFormPassword4').focus();
+    }
+    if (signPass.trim().length <6) {
+      validated=false;
+      $('#pass-enter-error').text("Password should be minimum 6 characters long, Please ReEnter");
       $('#exampleDropdownFormPassword4').focus();
     }
     // Send the login posts

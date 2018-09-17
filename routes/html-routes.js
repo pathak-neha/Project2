@@ -20,21 +20,20 @@ var user = require('../models/user.js');
 
 // lost route loads lost.html
 
-router.get('/lost/auth', verifytoken, function (req, res) {
+router.get('/auth', verifytoken, function (req, res) {
   console.log(req.headers);
   jwt.verify(req.token, 'secretkey', (err, authData) => {
     if (err) {
       res.json({
-        status: '403',
+        status: '404',
 
       });
     } else {
+     
       res.json({
         status: '200',
-        message: 'Post created...',
-        authData
+
       });
-      res.render('lost');
     };
   });
   //res.sendFile(path.join(__dirname, '../public/frontend/lost.html'));
@@ -62,15 +61,17 @@ router.get('/browse-items', function (req, res) {
   res.render('browse')
 });
 
-router.get('/signIn', function (req, res) {
-  res.render('signIn')
+router.get('/SignIn', function (req, res) {
+  res.render('SignIn')
 });
 
-router.get('/signUp', function (req, res) {
-  res.render('signUp')
+router.get('/SignUp', function (req, res) {
+  res.render('SignUp')
 });
 
-
+router.get("*", function (req, res) {
+  res.render('page-404')
+});
 
 // Verify Token
 function verifytoken(req, res, next) {
@@ -94,4 +95,5 @@ function verifytoken(req, res, next) {
 
   }
 }
+
 module.exports = router;
