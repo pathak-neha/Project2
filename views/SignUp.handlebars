@@ -1,5 +1,4 @@
-    <!-- ///////////////////////////////HEADER//////////////////////////////////////////////////// -->
-    <div class='card text-center bg-info'>
+<div class='card text-center bg-info'>
         <div class='card-header'>
 
               <!-- ////////////////////////////////////////////////// -->
@@ -26,10 +25,10 @@
                 </li>
 
                 <li class='nav-item'>
-                    <a class='nav-link' href='lost'>Report Lost Item</a>
+                     <a  class='nav-link lostItem' href='#'>Report Lost Item</a>
                 </li>
                 <li class='nav-item'>
-                    <a class='nav-link' href='found'>Report Found Item</a>
+                      <a class='nav-link foundItem' href='#'>Report Found Item</a>
                 </li>
                 <li class='nav-item'>
                     <a class='nav-link' href='browse-items'>Browse Lost and Found Items</a>
@@ -47,24 +46,29 @@
         <div class='container'>
             <form class='px-4 py-3'>
                 <div class='form-group'>
-                    <label for='exampleDropdownFormEmail1'>First Name</label>
-                    <input type='text' class='form-control' id='exampleDropdownFormEmail1' placeholder='First Name'>
+                    <label for='exampleDropdownFormFirst'>First Name</label>
+                    <input type='text' class='form-control' id='exampleDropdownFormFirst' placeholder='First Name'>
+                    <div id="first-enter-error"></div>
                 </div>
                 <div class='form-group'>
-                        <label for='exampleDropdownFormEmail2'>Last Name</label>
-                        <input type='text' class='form-control' id='exampleDropdownFormEmail2' placeholder='Last Name'>
+                        <label for='exampleDropdownFormLast'>Last Name</label>
+                        <input type='text' class='form-control' id='exampleDropdownFormLast' placeholder='Last Name'>
+                        <div id="last-enter-error"></div>
                     </div>
                     <div class='form-group'>
                             <label for='exampleDropdownFormEmail3'>Email address</label>
                             <input type='email' class='form-control' id='exampleDropdownFormEmail3' placeholder='email@example.com'>
+                            <div id="email-enter-error"></div>
                         </div>
 
                 <div class='form-group'>
                     <label for='exampleDropdownFormPassword4'>Password</label>
                     <input type='password' class='form-control' id='exampleDropdownFormPassword4' placeholder='Password'>
+                    <div id="pass-enter-error"></div>
                 </div>
                
-                <button type='submit' class='btn btn-primary'>Sign up</button>
+                <button id='signUpButton' type='submit' class='btn btn-primary'>Sign up</button>
+                <div id="signup-error"></div>
             </form>
            
         </div>
@@ -90,7 +94,4 @@
         <div class='footer-copyright text-center py-3'>© 2018 Copyright:
             <a href='#'> Lost and Found</a>
         </div>
-
     </footer>
-
-    <!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
