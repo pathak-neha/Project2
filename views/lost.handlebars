@@ -20,10 +20,10 @@
             <a class='nav-link' href='SignUp'>Sign Up</a>
           </li>
           <li class='nav-item'>
-            <a class='nav-link lostItem' href='#'>Report Lost Item</a>
+            <a class='nav-link active' href='lost'>Report Lost Item</a>
           </li>
           <li class='nav-item'>
-            <a class='nav-link foundItem' href='#'>Report Found Item</a>
+            <a class='nav-link ' href='found'>Report Found Item</a>
           </li>
           <li class='nav-item'>
             <a class='nav-link' href='browse-items'>Browse Lost and Found Items</a>
@@ -56,13 +56,15 @@
           <div class='input-group-prepend'>
             <span class='input-group-text' id='' value=''>First Name</span>
           </div>
-          <input type='text' id='firstName' class='form-control'>
-          <br><br>
+          <input type='text' class='form-control'>
+          <br>
+          <br>
           <div class='input-group-prepend'>
             <span class='input-group-text' id=''>Last Name</span>
           </div>
-          <input type='text' id='lastName' class='form-control'>
-          <br><br>
+          <input type='text' class='form-control'>
+          <br>
+          <br>
         </div>
         <br>
         <div class='input-group'>
@@ -104,60 +106,48 @@
         <!-- ///////////////////////////////Size///////////////////////////////////////////// -->
         <div class='input-group mb-3'>
           <div class='input-group-prepend'>
-            <label class='input-group-text' for='inputGroupSelect01'>Size</label>
+            <label class='input-group-text'>Size</label>
           </div>
-          <select class='custom-select' id='inputGroupSelect01'>
-            <option selected>Choose...</option>
-            <option value='Small (30cm and under)'>Small (30cm and under)</option>
-            <option value='Medium (Larger than 30cm)'>Medium (Larger than 30cm)</option>
-            <option value='Large (Larger than 60cm)'>Large (Larger than 60cm)</option>
+          <select class='custom-select' id='size'>
+            <option value="Small (30cm and under)">Small (30cm and under)</option>
+            <option value="Medium (Larger than 30cm)">Medium (Larger than 30cm)</option>
+            <option value="Large (Larger than 60cm)">Large (Larger than 60cm)</option>
           </select>
         </div>
         <!-- ///////////////////////////////Color///////////////////////////////////////////// -->
         <div class='input-group mb-3'>
           <div class='input-group-prepend'>
-            <label class='input-group-text' for='inputGroupSelect01'>Color</label>
+          <label class='input-group-text' >Color</label>
           </div>
-          <select class='custom-select' id='inputGroupSelect01'>
-            <option selected>Choose...</option>
-          <option value='Red'>Red</option>
-          <option value='Blue'>Blue</option>
-          <option value='Green'>Green</option>
-          <option value='Yellow'>Yellow</option>
-          <option value='Orange'>Orange</option>
-          <option value='Purple'>Purple</option>
-          <option value='White'>White</option>
-          <option value='Black'>Black</option>
-          <option value='Grey'>Grey</option>
-          <option value='Pink'>Pink</option>
-          <option value='Brown'>Brown</option>
-          <option value='Mix of colors'>Mix of many colors</option>
+          <select class='custom-select' id='color'>
+          <option value="Red">Red</option>
+          <option value="Blue">Blue</option>
+          <option value="Green">Green</option>
+          <option value="Yellow">Yellow</option>
+          <option value="Orange">Orange</option>
+          <option value="Purple">Purple</option>
+          <option value="White">White</option>
+          <option value="Black">Black</option>
+          <option value="Grey">Grey</option>
+          <option value="Pink">Pink</option>
+          <option value="Brown">Brown</option>
+          <option value="Mix of many colors">Mix of many colors</option>
           </select>
         </div>
-        <!-- //////////////////////////////////////////////////////////////////////////////// -->
-        <div class='input-group mb-3'>
-          <div class='input-group-prepend'>
-            <span class='input-group-text'>Lost Item Photo</span>
-          </div>
-          <div class='custom-file'>
-            <input type='file' class='custom-file-input' id='inputGroupFile01'>
-            <label class='custom-file-label' for='inputGroupFile01'>Choose file</label>
-          </div>
+        <!-- //////////////////////////////////////////////////////////////////////////////////// -->
+        <div class='form-group'>
+          <label>Lost Location</label>
+          <textarea class='form-control' id='location' rows='1' placeholder='Start Typing the Address Here'></textarea>
         </div>
         <!-- //////////////////////////////////////////////////////////////////////////////////// -->
         <div class='form-group'>
-          <label for='exampleFormControlTextarea1'>Lost Location</label>
-          <textarea class='form-control' id='exampleFormControlTextarea1' rows='1' placeholder='ZIP code or Address'></textarea>
-        </div>
-        <!-- //////////////////////////////////////////////////////////////////////////////////// -->
-        <div class='form-group'>
-          <label for='exampleFormControlTextarea1'>Item Description</label>
-          <textarea class='form-control' id='exampleFormControlTextarea1' rows='1' placeholder='Wallet including IDs, Debit and Credit Cards'></textarea>
+          <label>Item Description</label>
+          <textarea class='form-control' id='description' rows='1' placeholder='Example: Wallet including IDs, Debit and Credit Cards'></textarea>
         </div>
         <!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
     </div>
     <div class='container'>
-      <button id="submitItems" type='button' class='btn btn-primary btn-lg btn-block'>SUBMIT</button>
+      <button id="submitItems" type='submit' class='btn btn-primary btn-lg btn-block'>SUBMIT</button>
     </div>
     </form>
     <br>
@@ -211,6 +201,8 @@
             </div>
         </div>
     </div>
+  </footer>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByKeaQmLeI9WrlUZqt0-cCDR6KkXpskiw&libraries=places&callback=activateSearch" async defer></script>
 
 
 {{!-- /////////////////////////////////////////////////////////////////////////////////////// --}}
@@ -238,7 +230,7 @@
     $("#itemsEntry").hide();
     $("#submitItems").hide();
 
-    $("#enterLostItems").click(function () {
+    $("#enterLostItems").click(function (event) {
       event.preventDefault();
       $("#itemsEntry").show();
       $("#submitItems").show();
