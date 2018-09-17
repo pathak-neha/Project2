@@ -114,9 +114,17 @@ var router = express.Router();
     });
 
     function sendEmailToNewUser(email, firstName){
-        var emailBody = 'Hello '+firstName+',\n'+'Welcom to Lost and Found App\n'+'Registration to Lost and Found app is successful'
-        var emailSubject = firstName+' Welcome to Lost and Found App'
-        var sendUserEmail = new sendmail(email,emailSubject,emailBody);
+        var emailBody = 'Dear '+firstName+' '+lastname+',\n'+'Welcome to Lost and Found App\n'
+        +'Our database shows your entered attributes for Lost and Found items has a match\n'
+        +'Please log in with your username and password to our website to see the match items\n'
+        +'\n'
+        +'Regards,\n'
+        +'Lost and Found Development Team'
+ 
+        var emailSubject = ' Lost and Found Item Match for '+firstName+' '+lastname
+        // var emailUserName=' Username: '+username
+        // var emailUserPassword=' Password: '+password
+        var sendUserEmail = new sendmail(email,emailSubject,emailBody,);
         sendUserEmail.sendMail;
     };
 
