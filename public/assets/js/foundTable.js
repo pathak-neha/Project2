@@ -1,48 +1,47 @@
 // The code for populating the list of found items at the bottom of the found.html
 $(document).ready(function () {
 
-    // items to be added into the table
-    var email = $('#exampleFormControlInput1').val();
-    var phone = $('#exampleFormControlInput2').val();
-    var category = $('#category').val();
-    var subcategory = $('.subcategory').val();
-    var size = $('.size').val();
-    var color = $('.color').val();
-    var location = $('.location').val();
-    var description = $('.description').val();
-    var claimed = false;
-    var uid = localStorage.getItem('user_id')
+    $(document).on('submit', '#itemsEntry', submitFoundItem);
 
-    $(document).on('submit', '#itemsEntry', submitLostItem);
+    function submitFoundItem(event) {
+        // items to be added into the table
+        var category = $('#category').val();
+        var subcategory = $('#categorySelect').find(":selected").val();
+        var size = $('#size').find(':selected').val();
+        var color = $('#color').find(":selected").val();
+        var location = $('textarea#location').val();
+        var description = $('textarea#description').val();
+        var claimed = false;
+        var uid = localStorage.getItem('user_id')
 
-    function submitLostItem(event) {
         event.preventDefault();
-        // Don't do anything if the name fields hasn't been filled out
+        console.log('hi')
         if (!category) {
             return;
+        } else {
+            obj = {
+                category: category,
+                subcategory: subcategory,
+                size: size,
+                color: color,
+                location: location,
+                description: description,
+                claimed: claimed,
+                UserId: uid
+            }
+            console.log(`Adding... ${JSON.stringify(obj)} to the Found Items table`)
+            addNewItem(obj);
         }
-        // Calling the upsertAuthor function and passing in the value of the name input
-        addNewItem({
-            email: email,
-            phone: phone,
-            category: category,
-            subcategory: subcategory,
-            size: size,
-            color: color,
-            location: location,
-            description: description,
-            claimed: claimed,
-            UserId: uid
-        });
     }
 
     function addNewItem(data) {
-        $.ajax("/api/lost", {
+        $.ajax('/api/found', {
             type: 'POST',
             data: data
         }).then(function (res) {
-            console.log("token: " + res.token)
+            console.log('done')
             location.replace('/')
+            location.replace('/browse-items')
         })
     }
 })

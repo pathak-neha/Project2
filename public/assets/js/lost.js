@@ -1,6 +1,7 @@
-// Connects to the Form for the lost item (Using categories table)
+// Connects to the Form for the lost item(Using categories table)
 $(document).ready(function () {
     loadUserInfo();
+    activateSearch();
 });
 
 
@@ -14,8 +15,8 @@ var subcategory = {
     Other: ["Must be clarified in item description section"]
 };
 
-    function makeSubmenu(value) {
-    if(value.length==0) document.getElementsById('categorySelect').innerHTML = '<option></option>';
+function makeSubmenu(value) {
+    if (value.length == 0) document.getElementsById('categorySelect').innerHTML = '<option></option>';
     else {
         var categoryOptions = '';
         for (categoryId in subcategory[value]) {
@@ -35,5 +36,22 @@ function resetSelection() {
     document.getElementById('categorySelect').selectedIndex = 0;
 };
 
-   
+var latSearch;
+var lngSearch;
+
+function activateSearch() {
+    var input = document.getElementById('location');
+    var autoComplete = new google.maps.places.Autocomplete(input);
+    console.log(autoComplete)
+    google.maps.event.addListener(autoComplete, 'place_changed', function () {
+        var place = autoComplete.getPlace();
+        var name = place.name;
+        latSearch = place.geometry.location.lat();
+        lngSearch = place.geometry.location.lng();
+        console.log("name: " + name + " lat: " + latSearch + " lng: " + lngSearch)
+        searchAddress = place.formatted_address;
+    });
+};
+
+
 

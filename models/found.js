@@ -1,12 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var Found = sequelize.define('Found', {
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true,
-      }
-    },
     category: {
       type: DataTypes.STRING,
       allowNull: false
@@ -22,9 +15,6 @@ module.exports = function(sequelize, DataTypes) {
     color: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    photo: {
-      type: DataTypes.TEXT
     },
     location: {
       type: DataTypes.STRING,
