@@ -69,9 +69,9 @@ router.get('/SignUp', function (req, res) {
   res.render('SignUp')
 });
 
-router.get("*", function (req, res) {
-  res.render('page-404')
-});
+// router.get("*", function (req, res) {
+//   res.render('page-404')
+// });
 
 // Verify Token
 function verifytoken(req, res, next) {
