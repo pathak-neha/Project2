@@ -183,8 +183,9 @@ $(document).ready(function () {
     };
 
     function claimItem() {
-        var itemID = $("#itemId").val();
+        var itemID = $("#itemId").text();
         console.log(itemID);
+        
     }
 
     $('#claim-btn').on('click',claimItem);

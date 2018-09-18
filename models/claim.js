@@ -1,17 +1,17 @@
 module.exports = function (sequelize, DataTypes) {
   var Claim = sequelize.define('Claim', {
-    type: {
+    itemType: {
       type: DataTypes.STRING,
       allowNull: false
     },
   });
 
   Claim.associate = function(models) {
-    // Claim.belongsTo(models.User, {
-    //   foreignKey: {
-    //     allowNull: false
-    //   }
-    // });
+    Claim.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
     
     Claim.belongsTo(models.Lost, {
       foreignKey: {
