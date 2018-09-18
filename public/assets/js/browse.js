@@ -153,6 +153,7 @@ $(document).ready(function () {
                 data: searchData
             }).then(function (data) {
             });
+
         } else if (tableValue == 'Found Items') {
             $.ajax("/browse-found-items", {
                 type: 'GET',
