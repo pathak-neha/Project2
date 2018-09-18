@@ -17,3 +17,38 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+#lostBG {
+    background-image: url("../img/geometricBG.png");
+    background-size: cover;
+}
+
+#foundBG {
+    background-image: url("../img/pinkgeoBG.png");
+    background-size: cover;
+}
+
+#signInBG, #signUpBG {
+    background-image: url("../img/greengeoBG.png");
+    background-size: cover;
+}
+
+#browseBG{
+    background-image: url("../img/redgeoBG.jpg");
+    background-size: cover;
+}
+
+h2 {
+color: white;
+}
+
+#searchEntry {
+    max-width: 1140px;
+    margin: auto;
+}
+
+h7, h8 {
+    font-size: 1.25rem;
+    padding: 8px;
+    font-weight: 100;
+}

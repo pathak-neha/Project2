@@ -41,35 +41,43 @@ router.get('/auth', verifytoken, function (req, res) {
 
 //Create all our routes and set up logic within those routes where required.
 router.get('/', function (req, res) {
-  
+
   db.Lost.findAll({
     order: [
       ['id', 'DESC']
     ]
   }).then(function(data) {
-    // console.log("Query: " + idQuery);
-    console.log("Lost Data: " + JSON.stringify(data));
-    // idData.push(data);
-    // db.Found.findAll({
-    //   where: {
-    //     id: idQuery.id,
-    //     claimed: 0
-    //   }
-    // }).then(function(result) {
-    //   console.log("Found Data: " + JSON.stringify(result));
-    //   idData.push(result);
-    //   console.log("global Data: " + JSON.stringify(idData));
-    // })
-    // console.log('Querying the ID')
-  })
-
-
-  res.render('home');
+    console.log("Lost Data: " + JSON.stringify(data[0]));
+    db.Found.findAll({
+      order: [
+        ['id', 'DESC']
+      ]
+    }).then(function(result) {
+      console.log("Found Data: " + JSON.stringify(result[0]));
+    res.render('home', {largestLostDiv: data[0], largestFoundDiv: result[0]});
+    });
+  });
 });
 
 
+
+
 router.get('/index', function (req, res) {
-  res.render('home');
+  db.Lost.findAll({
+    order: [
+      ['id', 'DESC']
+    ]
+  }).then(function(data) {
+    console.log("Lost Data: " + JSON.stringify(data[0]));
+    db.Found.findAll({
+      order: [
+        ['id', 'DESC']
+      ]
+    }).then(function(result) {
+      console.log("Found Data: " + JSON.stringify(result[0]));
+    res.render('home', {largestLostDiv: data[0], largestFoundDiv: result[0]});
+    });
+  });
 });
 
 router.get('/found', function (req, res) {
