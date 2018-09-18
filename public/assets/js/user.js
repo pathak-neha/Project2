@@ -83,7 +83,7 @@ function clickSingInButtonListener() {
         localStorage.setItem('user_email', res.email);
         location.replace('/index');
       } else {
-        $('#signin-enter-error').text(res.message);
+        $('#pass-enter-error').text(res.message);
 
       }
     }
