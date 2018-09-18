@@ -40,6 +40,7 @@ tr:nth-child(even) {
 
 h2 {
 color: white;
+font-weight: 100;
 }
 
 #searchEntry {
@@ -51,4 +52,58 @@ h7, h8 {
     font-size: 1.25rem;
     padding: 8px;
     font-weight: 100;
+}
+
+#signInContainer, #signUpContainer {
+    color: white;
+}
+
+#homeBG {
+    background-image: url("../img/rainbowBG.jpg");
+    background-size: cover;
+    color: white;
+}
+
+label {
+    font-weight: 100;
+}
+
+.notSignedMessage {
+    font-weight: 350;
+}
+
+#signInButton {
+    margin-top: 10px;
+}
+
+#enterFoundItems, #enterLostItems {
+    margin-top: 21px;
+}
+
+#homeLine1 {
+    max-width: 40%;
+    margin: auto;
+    background-color: rgba(153, 214, 255,0.6)
+}
+
+#homeLine2 {
+    max-width: 25%;
+    margin: auto;
+    background-color: rgba(153, 214, 255,0.6)
+}
+
+#lostCountDiv, #foundCountDiv {
+    max-width: 17%;
+    margin: auto;
+    background-color: rgba(153, 214, 255,0.6)
+}
+
+h10 {
+    font-weight: 100;
+    color: darkslateblue;
+}
+
+h9 {
+    color: mediumvioletred;
+    font-weight: bold;
 }
