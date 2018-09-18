@@ -1,13 +1,13 @@
 // Connects to the Form for the found item (Using categories table)
 $(document).ready(function () {
     $("#userNames").show();
-    $("#itemsEntry").hide();
+    $("#foundItemsEntry").hide();
     $("#submitItems").hide();
     activateSearch();
 
     $("#enterFoundItems").click(function (event) {
         event.preventDefault();
-        $("#itemsEntry").show();
+        $("#foundItemsEntry").show();
         $("#submitItems").show();
 
     });

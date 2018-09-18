@@ -19,6 +19,7 @@ var idQuery;
 
 
 router.get('/browse-by-id', function(req, res) {
+  console.log('hi')
   console.log(req.query);
   idQuery = req.query;
   db.Lost.findAll({

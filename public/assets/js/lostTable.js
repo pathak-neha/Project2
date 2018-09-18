@@ -15,7 +15,6 @@ $(document).ready(function () {
         var uid = localStorage.getItem('user_id')
 
         event.preventDefault();
-        console.log('hi')
         if (!category) {
             return;
         } else {
