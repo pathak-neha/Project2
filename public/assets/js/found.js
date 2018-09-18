@@ -49,7 +49,9 @@ var lngSearch;
 function activateSearch() {
     var input = document.getElementById('location');
     var autoComplete = new google.maps.places.Autocomplete(input);
+    
     console.log(autoComplete)
+
     google.maps.event.addListener(autoComplete, 'place_changed', function () {
         var place = autoComplete.getPlace();
         var name = place.name;
@@ -58,4 +60,6 @@ function activateSearch() {
         console.log("name: " + name + " lat: " + latSearch + " lng: " + lngSearch)
         searchAddress = place.formatted_address;
     });
+
+
 };
