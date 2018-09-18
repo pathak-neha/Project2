@@ -1,7 +1,7 @@
 // The code for populating the list of found items at the bottom of the found.html
 $(document).ready(function () {
 
-    $(document).on('submit', '#itemsEntry', submitFoundItem);
+    $(document).on('submit', '#foundItemsEntry', submitFoundItem);
 
     function submitFoundItem(event) {
         // items to be added into the table
@@ -15,7 +15,6 @@ $(document).ready(function () {
         var uid = localStorage.getItem('user_id')
 
         event.preventDefault();
-        console.log('hi')
         if (!category) {
             return;
         } else {

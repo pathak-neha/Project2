@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('#searchBarBtn').on('click', function() {
+    $('#searchBarBtn').on('click', function(event) {
         event.preventDefault();
         setTimeout(displayIDResults, 1000);
         console.log('Search Bar Input: ' + $('#searchBarInput').val().trim());
@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     };
     
-    $('#searchBtn').on('click', function () {
+    $('#searchBtn').on('click', function (event) {
         event.preventDefault();
         getInputValues();
         if ($('#searchTableID').val() == 'Lost Items') {
@@ -29,6 +29,10 @@ $(document).ready(function () {
             setTimeout(displayFoundResults, 1000);
         }
     });
+
+    function displayIDResults() {
+        window.location.href = 'http://localhost:8080/browse-by-id-result';
+    }
 
     function displayLostResults() {
         window.location.href = 'http://localhost:8080/browse-lost-items-result';
@@ -149,6 +153,7 @@ $(document).ready(function () {
                 data: searchData
             }).then(function (data) {
             });
+
         } else if (tableValue == 'Found Items') {
             $.ajax("/browse-found-items", {
                 type: 'GET',
@@ -176,4 +181,12 @@ $(document).ready(function () {
         console.log('The searchObj: ' + JSON.stringify(searchObj));
         getSwitchExp(searchObj, tableValue);
     };
+
+    function claimItem() {
+        var itemID = $("#itemId").text();
+        console.log(itemID);
+        
+    }
+
+    $('#claim-btn').on('click',claimItem);
 });
