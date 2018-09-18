@@ -68,8 +68,10 @@ label {
     font-weight: 100;
 }
 
-.notSignedMessage {
-    font-weight: 350;
+.notSignedMessage, #welcomUser {
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
 }
 
 #signInButton {

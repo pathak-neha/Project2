@@ -82,9 +82,14 @@ router.post('/api/userpost', (req, res) => {
     }).then(function (dbUser) {
 
         if (dbUser !== null) {
-            sendEmailToNewUser(dbUser.email, dbUser.firstname, dbUser.password);
+            try{
+            sendEmailToNewUser(dbUser.email, dbUser.firstname,dbUser.lastname, dbUser.password);
             var user = dbUser.username;
-            sendSMS(dbUser.email,dbUser.firstname,dbUser.password);
+           // sendSMS(dbUser.email,dbUser.firstname,dbUser.password);
+            }
+            catch(err){
+                console.log("error adding new user: "+err);
+            }
             jwt.sign({ user }, 'secretkey', { expiresIn: '60s' }, (err, token) => {
                 console.log("token: " + token);
                 res.json({
@@ -105,14 +110,14 @@ router.post('/api/userpost', (req, res) => {
     });
 });
 
-
-function sendEmailToNewUser(email, firstName, password) {
-    var emailBody = 'Hello ' + firstName + ',\n' + 'Welcom to Lost and Found App\n' + 'Registration to Lost and Found app is successful\n' + 'You can log in by below credentials:\n'
-        + 'Username: ' + email + '\n'
-        + 'Password: ' + password + '\n'
-        + '\n'
-        + 'Regards,\n'
-        + 'Lost and Found Development Team'
+function sendEmailToNewUser(email, firstName,lastname, password) {
+    var emailBody = 'Hello '+firstName+' '+lastname+',\n'+'Welcome to Lost and Found App\n'+'Your Registration has been done successfully\n\n'
+    +'You can log in by below credentials:\n'
+    +'Username: '+email+'\n'
+    +'Password: '+password+'\n'
+    +'\n'
+    +'Regards,\n'
+    +'Lost and Found Development Team'
     var emailSubject = firstName + ' Welcome to Lost and Found App'
     var sendUserEmail = new sendmail(email, emailSubject, emailBody);
 };
@@ -121,12 +126,13 @@ function sendEmailToNewUser(email, firstName, password) {
 //Authorization: Bearer <access_token>
 function sendSMS(email, firstName, password) {
     var phoneNumber = "14165709944";
-    var message = 'Hello ' + firstName + ',\n' + 'Welcom to Lost and Found App\n' + 'Registration to Lost and Found app is successful\n' + 'You can log in by below credentials:\n'
-        + 'Username: ' + email + '\n'
-        + 'Password: ' + password + '\n'
-        + '\n'
-        + 'Regards,\n'
-        + 'Lost and Found Development Team'
+    var message = 'Hello '+firstName+' '+lastname+',\n'+'Welcome to Lost and Found App\n'+'Your Registration has been done successfully\n'
+    +'You can log in by below credentials:\n'
+    +'Username: '+username+'\n'
+    +'Password: '+password+'\n'
+    +'\n'
+    +'Regards,\n'
+    +'Lost and Found Development Team'
     var emailSubject = firstName + ' Welcome to Lost and Found App'
     var messageType = "ARN";
     var newsendSMS = new sendsms(phoneNumber, message, messageType);
