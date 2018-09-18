@@ -11,7 +11,7 @@ var jwt = require('jsonwebtoken');
 // =============================================================
 var express = require('express');
 var router = express.Router();
-
+var db = require('../models')
 // Import the model to use its database functions.
 var lost = require('../models/lost.js');
 var found = require('../models/found.js');
@@ -41,6 +41,29 @@ router.get('/auth', verifytoken, function (req, res) {
 
 //Create all our routes and set up logic within those routes where required.
 router.get('/', function (req, res) {
+  
+  db.Lost.findAll({
+    order: [
+      ['id', 'DESC']
+    ]
+  }).then(function(data) {
+    // console.log("Query: " + idQuery);
+    console.log("Lost Data: " + JSON.stringify(data));
+    // idData.push(data);
+    // db.Found.findAll({
+    //   where: {
+    //     id: idQuery.id,
+    //     claimed: 0
+    //   }
+    // }).then(function(result) {
+    //   console.log("Found Data: " + JSON.stringify(result));
+    //   idData.push(result);
+    //   console.log("global Data: " + JSON.stringify(idData));
+    // })
+    // console.log('Querying the ID')
+  })
+
+
   res.render('home');
 });
 
