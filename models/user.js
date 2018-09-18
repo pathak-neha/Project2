@@ -45,13 +45,24 @@ module.exports = function(sequelize, DataTypes) {
     // }
   });
 
-  // User.associate = function(models) {
-  //   User.hasMany(models.Claim, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  // }
+  User.associate = function(models) {
+    User.hasMany(models.Claim, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    User.hasMany(models.Lost, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    User.hasMany(models.Found, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  }
+  
 
   return User;
 };
