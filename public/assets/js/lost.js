@@ -1,7 +1,7 @@
 // Connects to the Form for the lost item(Using categories table)
 $(document).ready(function () {
-    // loadUserInfo();
-    activateSearch();
+ loadUserInfo();
+ activateSearch();
 });
 
 
