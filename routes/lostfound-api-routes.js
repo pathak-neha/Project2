@@ -7,6 +7,7 @@
 var path = require('path');
 var express = require('express');
 var router = express.Router();
+var sendmail = require("../sendEmail.js");
 
 // Import the model to use its database functions.
 var db = require('../models')
@@ -94,6 +95,13 @@ router.get('/browse-found-items', function (req, res) {
 
 router.post('/api/lost', function (req, res) {
   db.Lost.create(req.body).then(function(results){
+   
+    try{
+      sendLostEnteredEmailToUser(req.body.email, req.body.firstname,req.body.lastname,req.body.UserId);
+      var user = dbUser.username;
+       } catch(err){
+        console.log("error sending Lost COnfirmation to user: "+err);
+    }
     res.json(results)
   })
 });
@@ -114,7 +122,7 @@ router.put('/api/lost/:id', function (req, res) {
 // ---------- ROUTES FOR 'FOUND' TABLE 
 router.get('/found', function (req, res) {
   db.Found.findAll({ include: db.User }).then(function (data) {
-    res.render('found', data)
+      res.render('found', data)
   })
 });
 
@@ -126,6 +134,13 @@ router.get('/browse-found', function (req, res) {
 
 router.post('/api/found', function (req, res) {
   db.Found.create(req.body).then(function(results){
+    console.log(req.body.email);
+    try{
+      sendFoundEnteredEmailToUser(req.body.email, req.body.firstname,req.body.lastname,req.body.UserId);
+      var user = dbUser.username;
+       } catch(err){
+        console.log("error sending Lost COnfirmation to user: "+err);
+    }
     res.json(results)
   })
 });
@@ -142,6 +157,32 @@ router.put('/api/found/:id', function (req, res) {
     res.end();
   })
 });
+
+function sendLostEnteredEmailToUser(email, firstName,lastname,itemID) {
+  var emailBody ='Dear '+firstName+' '+lastname+',\n'+'Welcome to Lost and Found App\n'
+  +'We have received your lost item report.\n\n' 
+  +'Your unique item ID code is: '+ itemID+'\n'
+  +'You will be informed by Email if we found any items match with your property.\n'
+  +'\n'
+  +'Regards,\n'
+  +'Lost and Found Development Team'
+  var emailSubject = firstName +' '+lastname+ ' Confirmation - Lost Item information received'
+  var sendUserEmail = new sendmail(email, emailSubject, emailBody);
+};
+
+function sendFoundEnteredEmailToUser(email, firstName,lastname,itemID) {
+  var emailBody ='Dear '+firstName+' '+lastname+',\n'+'Welcome to Lost and Found App\n'
+  +'We have received your found item report.\n'
+  +'Thanks for your kind consideration to people properties\n\n' 
+  +'Your unique item ID code is: '+ itemID+'\n'
+  +'We will try to find someone who lost this item'
+  +'\n'
+  +'Regards,\n'
+  +'Lost and Found Development Team'
+
+  var emailSubject = firstName +' '+lastname+ ' Confirmation - Found Item information received'
+  var sendUserEmail = new sendmail(email, emailSubject, emailBody);
+};
 
 // Export routes for server.js to use.
 module.exports = router;

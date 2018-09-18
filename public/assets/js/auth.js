@@ -42,7 +42,7 @@ function loadUserInfo() {
   } else {
    
     $('#welcomUser').text('Please SignIn or SignUp to continue ');
-    $('.notSignedMessage').text('Please SignIn or SignUp if you have account set-up');
+    $('.notSignedMessage').text('Please SignIn or SignUp if you are new around here');
     if (document.getElementById('enterFoundItems') !== null) {
       document.getElementById('enterFoundItems').disabled = true;
     }

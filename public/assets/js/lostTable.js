@@ -12,7 +12,10 @@ $(document).ready(function () {
         var location = $('#location').val();
         var description = $('#description').val();
         var claimed = false;
-        var uid = localStorage.getItem('user_id')
+        var uid = localStorage.getItem('user_id');
+        var firstname = localStorage.getItem('user_firstName');
+        var lastname = localStorage.getItem('user_lastName');
+        var email = localStorage.getItem('user_email');
 
         event.preventDefault();
         if (!category) {
@@ -26,7 +29,10 @@ $(document).ready(function () {
                 location: location,
                 description: description,
                 claimed: claimed,
-                UserId: uid
+                UserId: uid,
+                firstname: firstname,
+                lastname:  lastname,
+                email:  email
             }
             console.log(`Adding... ${JSON.stringify(obj)} to the Lost Items table`)
             addNewItem(obj);
