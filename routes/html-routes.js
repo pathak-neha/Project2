@@ -11,7 +11,7 @@ var jwt = require('jsonwebtoken');
 // =============================================================
 var express = require('express');
 var router = express.Router();
-
+var db = require('../models')
 // Import the model to use its database functions.
 var lost = require('../models/lost.js');
 var found = require('../models/found.js');
@@ -41,12 +41,43 @@ router.get('/auth', verifytoken, function (req, res) {
 
 //Create all our routes and set up logic within those routes where required.
 router.get('/', function (req, res) {
-  res.render('home');
+
+  db.Lost.findAll({
+    order: [
+      ['id', 'DESC']
+    ]
+  }).then(function(data) {
+    console.log("Lost Data: " + JSON.stringify(data[0]));
+    db.Found.findAll({
+      order: [
+        ['id', 'DESC']
+      ]
+    }).then(function(result) {
+      console.log("Found Data: " + JSON.stringify(result[0]));
+    res.render('home', {largestLostDiv: data[0], largestFoundDiv: result[0]});
+    });
+  });
 });
 
 
+
+
 router.get('/index', function (req, res) {
-  res.render('home');
+  db.Lost.findAll({
+    order: [
+      ['id', 'DESC']
+    ]
+  }).then(function(data) {
+    console.log("Lost Data: " + JSON.stringify(data[0]));
+    db.Found.findAll({
+      order: [
+        ['id', 'DESC']
+      ]
+    }).then(function(result) {
+      console.log("Found Data: " + JSON.stringify(result[0]));
+    res.render('home', {largestLostDiv: data[0], largestFoundDiv: result[0]});
+    });
+  });
 });
 
 router.get('/found', function (req, res) {

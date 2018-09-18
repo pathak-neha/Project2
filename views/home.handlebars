@@ -1,6 +1,4 @@
  <!-- ///////////////////////////////HEADER//////////////////////////////////////////////////// -->
-    <div class='card text-center bg-primary'>
-        <div class='card-header'>
             <!-- ////////////////////////////////////////////////// -->
 
             <!-- ////////////////////////////////////////////////// -->
@@ -33,26 +31,42 @@
                     </ul>
 <br>
                     <form class="form-inline">
-                        <input id="searchBarInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <input id="searchBarInput" class="form-control mr-sm-2" type="search" placeholder="Search by ID" aria-label="Search">
                         <button id="searchBarBtn" class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
                     </form>
             </nav>
-        </div>
+    <div class='card text-center bg-primary'>
+        {{!-- <div class='card-header'>
+        </div> --}}
     
 
-    <div class='jumbotron'>
+    <div class='card text-center' id="homeBG">
         <div class='card-body'>
-            <h1 class='display-4'>WELCOME</h1>
-            <h4>WE HELP YOU RECOVER YOUR LOST ITEMS AND RETURN THEM SAFELY BACK TO YOU.</h4>
-            <h4>Lost Returns is here to help you recover your LOST items and RETURN them safely back to you.</h4>
+            <h1 class='display-4'>LOST & FOUND</h1>
+            <div id='homeLine1'>
+            <h4>An online platform for exchanging lost and found items.</h4>
+            </div>
+            <div id='homeLine2'>
+            <h4>Connecting finders to owners.</h4>
+            </div>
             <br>
-            <a href='#' class='float-left foundItem'><img src='../assets/img/report_found.png' class='rounded' alt='Report Found'
+            {{!-- <a href='#' class='float-left foundItem'><img src='../assets/img/report_found.png' class='rounded' alt='Report Found'
                     height='200' width='200'></a>
 
             <a class='float-center'><img class='rounded imgArea' alt='Giphy' height='200' width='200'></a>
 
             <a   href='#' class='float-right lostItem'><img src='../assets/img/report_lost.png' class='rounded' alt='Report Lost'
-                    height='200' width='200'></a>
+                    height='200' width='200'></a> --}}
+
+            <div id="lostCountDiv">
+            <h10>Lost Item Requests Since 2018: </h10>
+            <h9>{{#largestLostDiv}}{{this.id}}{{/largestLostDiv}}</h9>
+            </div>
+            <div id="foundCountDiv">
+            <h10>Found Item Requests Since 2018: </h10>
+            <h9>{{#largestFoundDiv}}{{this.id}}{{/largestFoundDiv}}</h9>
+            
+            </div>
         </div>
     </div>
     </div>
