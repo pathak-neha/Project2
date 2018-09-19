@@ -143,5 +143,12 @@ router.put('/api/found/:id', function (req, res) {
   })
 });
 
+// TO INPUT A CLAIM
+router.post('/api/claim', function (req, res) {
+  db.Claim.create(req.body).then(function(results){
+    res.json(results)
+  });
+});
+
 // Export routes for server.js to use.
 module.exports = router;
