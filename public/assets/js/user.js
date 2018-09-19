@@ -101,7 +101,6 @@ function emailSignUpEntryBlurEvent() {
       $('#email-enter-error').text("Email canot be blank, Please ReEnter");
       $('#exampleDropdownFormEmail3').focus();
     }
-
     else {
       $('#email-enter-error').text("");
 

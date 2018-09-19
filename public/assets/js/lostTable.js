@@ -4,6 +4,7 @@ $(document).ready(function () {
     $(document).on('submit', '#itemsEntry', submitLostItem);
 
     function submitLostItem(event) {
+        event.preventDefault();
         // items to be added into the table
         var category = $('#category').val();
         var subcategory = $('#categorySelect').find(":selected").val();
@@ -17,7 +18,14 @@ $(document).ready(function () {
         var lastname = localStorage.getItem('user_lastName');
         var email = localStorage.getItem('user_email');
 
-        event.preventDefault();
+        var validated = true;
+        if(description.trim() ==="" || description.trim().length<3){
+            validated = false;
+            $('#item-desc-error').text("Please enter brief description");
+            $('#description').focus();
+          }
+        
+       if(validated){
         if (!category) {
             return;
         } else {
@@ -37,6 +45,7 @@ $(document).ready(function () {
             console.log(`Adding... ${JSON.stringify(obj)} to the Lost Items table`)
             addNewItem(obj);
         }
+    }
     }
 
     function addNewItem(data) {

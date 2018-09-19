@@ -4,6 +4,7 @@ $(document).ready(function () {
     $(document).on('submit', '#foundItemsEntry', submitFoundItem);
 
     function submitFoundItem(event) {
+        event.preventDefault();
         // items to be added into the table
         var category = $('#category').val();
         var subcategory = $('#categorySelect').find(":selected").val();
@@ -17,26 +18,32 @@ $(document).ready(function () {
         var lastname = localStorage.getItem('user_lastName');
         var email = localStorage.getItem('user_email');
 
-
-        event.preventDefault();
-        if (!category) {
-            return;
-        } else {
-            obj = {
-                category: category,
-                subcategory: subcategory,
-                size: size,
-                color: color,
-                location: location,
-                description: description,
-                claimed: claimed,
-                UserId: uid,
-                firstname: firstname,
-                lastname:  lastname,
-                email:  email
+        var validated = true;
+        if (description.trim() === "" || description.trim().length < 3) {
+            validated = false;
+            $('#item-desc-error').text("Please enter brief description");
+            $('#description').focus();
+        }
+        if (validated) {
+            if (!category) {
+                return;
+            } else {
+                obj = {
+                    category: category,
+                    subcategory: subcategory,
+                    size: size,
+                    color: color,
+                    location: location,
+                    description: description,
+                    claimed: claimed,
+                    UserId: uid,
+                    firstname: firstname,
+                    lastname: lastname,
+                    email: email
+                }
+                console.log(`Adding... ${JSON.stringify(obj)} to the Found Items table`)
+                addNewItem(obj);
             }
-            console.log(`Adding... ${JSON.stringify(obj)} to the Found Items table`)
-            addNewItem(obj);
         }
     }
 
