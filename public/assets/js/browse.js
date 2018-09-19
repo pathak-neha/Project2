@@ -31,15 +31,15 @@ $(document).ready(function () {
     });
 
     function displayIDResults() {
-        window.location.href = 'http://localhost:8080/browse-by-id-result';
+        window.location.href = 'https://secure-chamber-49154.herokuapp.com/browse-by-id-result';
     }
 
     function displayLostResults() {
-        window.location.href = 'http://localhost:8080/browse-lost-items-result';
+        window.location.href = 'https://secure-chamber-49154.herokuapp.com/browse-lost-items-result';
     };
 
     function displayFoundResults() {
-        window.location.href = 'http://localhost:8080/browse-found-items-result';
+        window.location.href = 'https://secure-chamber-49154.herokuapp.com/browse-found-items-result';
     }
 
     function getSwitchExp(searchObj, tableValue) {
