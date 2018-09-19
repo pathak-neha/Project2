@@ -18,11 +18,9 @@
   "bugs": {
     "url": "https://github.com/aboozarmojdeh/Project2-LostAndFound/issues"
   },
-  
-    "engines": { 
-        "node": "8.11.3" 
-     },
-  
+  "engines": {
+    "node": "8.11.3"
+  },
   "homepage": "https://github.com/aboozarmojdeh/Project2-LostAndFound#readme",
   "dependencies": {
     "bcrypt": "^3.0.0",

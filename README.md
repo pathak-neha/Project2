@@ -4,7 +4,9 @@
 
 This is an online platform that stores data on lost and found items.  Users fill out form requests to list a new item they’ve lost or an item they’ve found that needs to be returned. 
 
-** [Lost and Found App Live Preview!](https://google.com) 
+** [Lost and Found App Live Preview!](https://salty-earth-29682.herokuapp.com/) 
+
+** [Lost and Found App Gihub Workspace!](https://github.com/pathak-neha/Project2)
 
 ## Project 2- Coding Bootcamp - Full Stack Web Development - University of Toronto 
 
@@ -28,7 +30,10 @@ Technologies implemented:
 * CSS Framework: Bootstrap
 
 Future Developments:
-* ???
+* User management tools (eg. profile)
+* Upload photos to be stored in the cloud
+* Sharing on social media to announce you’ve found/lost an item
+
 
 Project Requirements:
 * Use Node/express

@@ -146,7 +146,7 @@
         <td>{{this.location}}</td>
         <td>{{this.description}}</td>
         <td>
-            <button id="claim-btn">Claim</button>
+            <button id="claim-btn" value="{{this.id}}" type="submit">Claim Lost Item</button>
         </td>
     </tr>
     {{/each}}
@@ -168,7 +168,7 @@
     </tr>
     {{#each foundItems}}
     <tr>
-        <td id="itemId" val={{this.id}}>{{this.id}}</td>
+        <td>{{this.id}}</td>
         <td>{{this.category}}</td>
         <td>{{this.subcategory}}</td>
         <td>{{this.size}}</td>
@@ -176,7 +176,7 @@
         <td>{{this.location}}</td>
         <td>{{this.description}}</td>
         <td>
-            <button id="claim-btn">Claim</button>
+            <button id="claim-btn" value="{{this.id}}" type="submit">Claim Found Item</button>
         </td>
     </tr>
     {{/each}}
