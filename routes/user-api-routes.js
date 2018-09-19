@@ -83,13 +83,20 @@ router.post('/api/userpost', (req, res) => {
 
         if (dbUser !== null) {
             try{
-            sendEmailToNewUser(dbUser.email, dbUser.firstname,dbUser.lastname, dbUser.password);
-            var user = dbUser.username;
-            sendSMS(dbUser.email,dbUser.firstname,dbUser.lastname,dbUser.password);
+                sendSMS(dbUser.email,dbUser.firstname,dbUser.lastname,dbUser.password);
             }
             catch(err){
-                console.log("error adding new user: "+err);
+                console.log("error sending sms to new user: "+err);
             }
+
+            try{
+                sendEmailToNewUser(dbUser.email, dbUser.firstname,dbUser.lastname, dbUser.password);
+            }
+            catch(err){
+                console.log("error sending email to new user: "+err);
+            }
+            
+            var user = dbUser.username;
             jwt.sign({ user }, 'secretkey', { expiresIn: '60s' }, (err, token) => {
                 console.log("token: " + token);
                 res.json({
