@@ -17,10 +17,10 @@ function checkToken() {
     }
     else {
       localStorage.clear();
+      loadUserInfo();
     }
   }
   );
-
 };
 
 function loadUserInfo() {
