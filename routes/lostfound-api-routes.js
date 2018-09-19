@@ -158,14 +158,12 @@ router.put('/api/found/:id', function (req, res) {
   })
 });
 
-<<<<<<< HEAD
 // TO INPUT A CLAIM
 router.post('/api/claim', function (req, res) {
   db.Claim.create(req.body).then(function(results){
     res.json(results)
   });
 });
-=======
 function sendLostEnteredEmailToUser(email, firstName,lastname,itemID) {
   var emailBody ='Dear '+firstName+' '+lastname+',\n'+'Welcome to Lost and Found App\n'
   +'We have received your lost item report.\n\n' 
@@ -191,7 +189,6 @@ function sendFoundEnteredEmailToUser(email, firstName,lastname,itemID) {
   var emailSubject = firstName +' '+lastname+ ' Confirmation - Found Item information received'
   var sendUserEmail = new sendmail(email, emailSubject, emailBody);
 };
->>>>>>> master
 
 // Export routes for server.js to use.
 module.exports = router;
