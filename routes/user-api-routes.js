@@ -85,7 +85,7 @@ router.post('/api/userpost', (req, res) => {
             try{
             sendEmailToNewUser(dbUser.email, dbUser.firstname,dbUser.lastname, dbUser.password);
             var user = dbUser.username;
-           // sendSMS(dbUser.email,dbUser.firstname,dbUser.password);
+            sendSMS(dbUser.email,dbUser.firstname,dbUser.lastname,dbUser.password);
             }
             catch(err){
                 console.log("error adding new user: "+err);
@@ -124,11 +124,11 @@ function sendEmailToNewUser(email, firstName,lastname, password) {
 
 // Format of token
 //Authorization: Bearer <access_token>
-function sendSMS(email, firstName, password) {
+function sendSMS(email, firstName,lastname, password) {
     var phoneNumber = "14165709944";
     var message = 'Hello '+firstName+' '+lastname+',\n'+'Welcome to Lost and Found App\n'+'Your Registration has been done successfully\n'
     +'You can log in by below credentials:\n'
-    +'Username: '+username+'\n'
+    +'Username: '+email+'\n'
     +'Password: '+password+'\n'
     +'\n'
     +'Regards,\n'
