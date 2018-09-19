@@ -158,6 +158,12 @@ router.put('/api/found/:id', function (req, res) {
   })
 });
 
+// TO INPUT A CLAIM
+router.post('/api/claim', function (req, res) {
+  db.Claim.create(req.body).then(function(results){
+    res.json(results)
+  });
+});
 function sendLostEnteredEmailToUser(email, firstName,lastname,itemID) {
   var emailBody ='Dear '+firstName+' '+lastname+',\n'+'Welcome to Lost and Found App\n'
   +'We have received your lost item report.\n\n' 

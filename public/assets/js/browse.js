@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('#searchBarBtn').on('click', function(event) {
+    $('#searchBarBtn').on('click', function (event) {
         event.preventDefault();
         setTimeout(displayIDResults, 1000);
         console.log('Search Bar Input: ' + $('#searchBarInput').val().trim());
@@ -9,8 +9,8 @@ $(document).ready(function () {
         }
         browseID(idObj);
     });
-    
-    
+
+
     function browseID(idObj) {
         $.ajax("/browse-by-id", {
             type: 'GET',
@@ -19,7 +19,7 @@ $(document).ready(function () {
         });
 
     };
-    
+
     $('#searchBtn').on('click', function (event) {
         event.preventDefault();
         getInputValues();
@@ -183,10 +183,44 @@ $(document).ready(function () {
     };
 
     function claimItem() {
-        var itemID = $("#itemId").text();
-        console.log(itemID);
-        
-    }
+        var itemID = $('#claim-btn').val();
+        var btnText = $('#claim-btn').text().toLowerCase();
+        var itemType = btnText.split(' ');
+        var uid = localStorage.getItem('user_id')
 
-    $('#claim-btn').on('click',claimItem);
+        console.log(`Claiming ${itemType[1]} item ID: ${itemID}...`);
+        
+        if (itemType[1] === 'lost') {
+            var obj = {
+                itemType: itemType[1],
+                UserId: uid,
+                LostId: itemID,
+            };
+        };
+        if (itemType[1] === 'found') {
+            var obj = {
+                itemType: itemType[1],
+                UserId: uid,
+                FoundId: itemID,
+            };
+        };
+        console.log(JSON.stringify(obj));
+        addNewItem(obj);
+    };
+
+    function addNewItem(data) {
+        $.ajax('/api/claim', {
+            type: 'POST',
+            data: data
+        }).then(function (res) {
+            console.log('Item claimed.')
+            location.replace('/browse-items')
+        });
+    };
+
+
+    $('#claim-btn').on('click', function (event) {
+        event.preventDefault();
+        claimItem();
+    });
 });
