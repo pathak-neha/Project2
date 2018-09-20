@@ -43,7 +43,7 @@ router.post('/api/login', (req, res) => {
             if (isPasswordCorrect) {
                 var user = dbUser.username;
             
-                jwt.sign({ user }, 'secretkey', { expiresIn: '60s' }, (err, token) => {
+                jwt.sign({ user }, 'secretkey', { expiresIn: '300s' }, (err, token) => {
                     res.json({
                         validate: true,
                         message: 'Welcome ' + dbUser.firstname,

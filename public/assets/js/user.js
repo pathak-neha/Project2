@@ -143,9 +143,9 @@ function clickSingupButtonListener() {
       $('#exampleDropdownFormFirst').focus();
     }
 
-    if (signLast.trim() === '') {
+    if (signLast.trim() === ''|| signLast.trim().length<3) {
       validated = false;
-      $('#last-enter-error').text("Last Name  cannot be blank ");
+      $('#last-enter-error').text("Last Name cannot be blank or require minimum 3 characters ");
       $('#exampleDropdownFormLast').focus();
     }
 
