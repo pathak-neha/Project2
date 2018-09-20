@@ -203,14 +203,4 @@ function clickSingupButtonListener() {
 }
 
 
-// $.ajax('/api/posts/', {
-//   type: 'POST',
-//   beforeSend: function (xhr) {
-//     /* Authorization header */
-//     xhr.setRequestHeader("Authorization", "Basic " + localStorage.getItem('session_token'));
-//   },
-// }).then(function (res) {
-//   console.log(res);
 
-// }
-// );
