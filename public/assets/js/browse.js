@@ -31,15 +31,15 @@ $(document).ready(function () {
     });
 
     function displayIDResults() {
-        window.location.href = 'https://secure-chamber-49154.herokuapp.com/browse-by-id-result';
+        window.location.href = 'https://lostandfound-fullstack.herokuapp.com/browse-by-id-result';
     }
 
     function displayLostResults() {
-        window.location.href = 'https://secure-chamber-49154.herokuapp.com/browse-lost-items-result';
+        window.location.href = 'https://lostandfound-fullstack.herokuapp.com/browse-lost-items-result';
     };
 
     function displayFoundResults() {
-        window.location.href = 'https://secure-chamber-49154.herokuapp.com/browse-found-items-result';
+        window.location.href = 'https://lostandfound-fullstack.herokuapp.com/browse-found-items-result';
     }
 
     function getSwitchExp(searchObj, tableValue) {
@@ -186,7 +186,10 @@ $(document).ready(function () {
         var itemID = $('#claim-btn').val();
         var btnText = $('#claim-btn').text().toLowerCase();
         var itemType = btnText.split(' ');
-        var uid = parseInt(localStorage.getItem('user_id'));
+        var uid = localStorage.getItem('user_id')
+        var firstname = localStorage.getItem('user_firstName');
+        var lastname = localStorage.getItem('user_lastName');
+        var email = localStorage.getItem('user_email');
 
         console.log(`Claiming ${itemType[1]} item ID: ${itemID}...`);
         
@@ -195,6 +198,9 @@ $(document).ready(function () {
                 itemType: 'lost',
                 UserId: uid,
                 LostId: itemID,
+                firstname: firstname,
+                lastname: lastname,
+                email: email
             };
         };
         if (itemType[0] === 'this') {
@@ -202,6 +208,9 @@ $(document).ready(function () {
                 itemType: 'found',
                 UserId: uid,
                 FoundId: itemID,
+                firstname: firstname,
+                lastname: lastname,
+                email: email
             };
         };
         console.log(JSON.stringify(obj));

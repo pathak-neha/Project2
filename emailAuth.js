@@ -1,4 +1,4 @@
 exports.auth = {
-  user: process.env.email_user,
-  pass: '@#Google@gmail2018'
+  user: process.env.EMAIL_USER,
+  pass: process.env.EMAIL_PASSWORD
 };
