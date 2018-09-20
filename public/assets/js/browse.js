@@ -193,9 +193,9 @@ $(document).ready(function () {
 
         console.log(`Claiming ${itemType[1]} item ID: ${itemID}...`);
         
-        if (itemType[1] === 'lost') {
+        if (itemType[2] === 'this') {
             var obj = {
-                itemType: itemType[1],
+                itemType: 'lost',
                 UserId: uid,
                 LostId: itemID,
                 firstname: firstname,
@@ -203,9 +203,9 @@ $(document).ready(function () {
                 email: email
             };
         };
-        if (itemType[1] === 'found') {
+        if (itemType[0] === 'this') {
             var obj = {
-                itemType: itemType[1],
+                itemType: 'found',
                 UserId: uid,
                 FoundId: itemID,
                 firstname: firstname,
