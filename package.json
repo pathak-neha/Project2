@@ -2,6 +2,9 @@
   "name": "project2-lostandfound",
   "version": "1.0.0",
   "description": "Lost and Found App - Project 2 - UofT coding Bootcamp",
+  "engines": {
+    "node": "9"
+  },
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -18,9 +21,6 @@
   "bugs": {
     "url": "https://github.com/aboozarmojdeh/Project2-LostAndFound/issues"
   },
-  "engines": {
-    "node": "8.11.3"
-  },
   "homepage": "https://github.com/aboozarmojdeh/Project2-LostAndFound#readme",
   "dependencies": {
     "bcrypt": "^3.0.0",
@@ -35,11 +35,11 @@
     "nodemailer": "^4.6.8",
     "sequelize": "^4.38.0",
     "sequelize-cli": "^4.1.1",
-    "": "^2.2.0"
+    "telesignsdk": "^2.2.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "chai-http": "^4.0.telesignsdk0",
+    "chai-http": "^4.0.0",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.2",
