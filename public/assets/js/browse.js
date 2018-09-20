@@ -186,20 +186,20 @@ $(document).ready(function () {
         var itemID = $('#claim-btn').val();
         var btnText = $('#claim-btn').text().toLowerCase();
         var itemType = btnText.split(' ');
-        var uid = localStorage.getItem('user_id')
+        var uid = parseInt(localStorage.getItem('user_id'));
 
         console.log(`Claiming ${itemType[1]} item ID: ${itemID}...`);
         
-        if (itemType[1] === 'lost') {
+        if (itemType[2] === 'this') {
             var obj = {
-                itemType: itemType[1],
+                itemType: 'lost',
                 UserId: uid,
                 LostId: itemID,
             };
         };
-        if (itemType[1] === 'found') {
+        if (itemType[0] === 'this') {
             var obj = {
-                itemType: itemType[1],
+                itemType: 'found',
                 UserId: uid,
                 FoundId: itemID,
             };
