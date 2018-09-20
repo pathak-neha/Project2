@@ -180,7 +180,7 @@ $(document).ready(function () {
             email: email
         };
       //  console.log(JSON.stringify(obj));
-        addNewItem(obj);
+      addNewLostClaim(obj);
     };
 
     function claimItemFound(itemID) {
@@ -203,11 +203,21 @@ $(document).ready(function () {
         };
 
         //console.log(JSON.stringify(obj));
-        addNewItem(obj);
+        addNewFoundClaim(obj);
     };
 
-    function addNewItem(data) {
-        $.ajax('/api/claim', {
+    function addNewFoundClaim(data) {
+        $.ajax('/api/claim/found', {
+            type: 'POST',
+            data: data
+        }).then(function (res) {
+            console.log('Item claimed.')
+            location.replace('/browse-items')
+        });
+    };
+
+    function addNewLostClaim(data) {
+        $.ajax('/api/claim/lost', {
             type: 'POST',
             data: data
         }).then(function (res) {
