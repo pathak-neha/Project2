@@ -1,46 +1,24 @@
 $(document).ready(function () {
-
     $('#searchBarBtn').on('click', function (event) {
         event.preventDefault();
-        setTimeout(displayIDResults, 1000);
-        console.log('Search Bar Input: ' + $('#searchBarInput').val().trim());
-        var idObj = {
+         var idObj = {
             id: $('#searchBarInput').val().trim()
         }
         browseID(idObj);
     });
-
-
     function browseID(idObj) {
         $.ajax("/browse-by-id", {
             type: 'GET',
             data: idObj
         }).then(function (data) {
+            location.replace('/browse-by-id-result')
         });
-
     };
 
     $('#searchBtn').on('click', function (event) {
         event.preventDefault();
         getInputValues();
-        if ($('#searchTableID').val() == 'Lost Items') {
-            setTimeout(displayLostResults, 1000);
-        } else if ($('#searchTableID').val() == 'Found Items') {
-            setTimeout(displayFoundResults, 1000);
-        }
     });
-
-    function displayIDResults() {
-        window.location.href = 'https://lostandfound-fullstack.herokuapp.com/browse-by-id-result';
-    }
-
-    function displayLostResults() {
-        window.location.href = 'https://lostandfound-fullstack.herokuapp.com/browse-lost-items-result';
-    };
-
-    function displayFoundResults() {
-        window.location.href = 'https://lostandfound-fullstack.herokuapp.com/browse-found-items-result';
-    }
 
     function getSwitchExp(searchObj, tableValue) {
         var switchExpression = '0';
@@ -152,6 +130,8 @@ $(document).ready(function () {
                 type: 'GET',
                 data: searchData
             }).then(function (data) {
+                console.log("data in browse-lost-items call back: " + JSON.stringify(data));
+                location.replace('/browse-lost-items-result')
             });
 
         } else if (tableValue == 'Found Items') {
@@ -159,6 +139,8 @@ $(document).ready(function () {
                 type: 'GET',
                 data: searchData
             }).then(function (data) {
+                console.log("tableValue: " + tableValue);
+                location.replace('/browse-found-items-result')
             });
         };
     };
@@ -182,38 +164,45 @@ $(document).ready(function () {
         getSwitchExp(searchObj, tableValue);
     };
 
-    function claimItem() {
-        var itemID = $('#claim-btn').val();
-        var btnText = $('#claim-btn').text().toLowerCase();
-        var itemType = btnText.split(' ');
+    function claimItemLost(itemID) {
         var uid = localStorage.getItem('user_id')
         var firstname = localStorage.getItem('user_firstName');
         var lastname = localStorage.getItem('user_lastName');
         var email = localStorage.getItem('user_email');
 
-        console.log(`Claiming ${itemType[1]} item ID: ${itemID}...`);
-        
-        if (itemType[2] === 'this') {
-            var obj = {
-                itemType: 'lost',
-                UserId: uid,
-                LostId: itemID,
-                firstname: firstname,
-                lastname: lastname,
-                email: email
-            };
+       // console.log(`Claiming ${itemType[1]} item ID: ${itemID}...`);
+        var obj = {
+            itemType: 'lost',
+            UserId: uid,
+            LostId: itemID,
+            firstname: firstname,
+            lastname: lastname,
+            email: email
         };
-        if (itemType[0] === 'this') {
-            var obj = {
-                itemType: 'found',
-                UserId: uid,
-                FoundId: itemID,
-                firstname: firstname,
-                lastname: lastname,
-                email: email
-            };
+      //  console.log(JSON.stringify(obj));
+        addNewItem(obj);
+    };
+
+    function claimItemFound(itemID) {
+       // var itemID = $('#claim-btn-found').val();
+        // btnText = $('#claim-btn-found').text().toLowerCase();
+       // var itemType = btnText.split(' ');
+        var uid = localStorage.getItem('user_id')
+        var firstname = localStorage.getItem('user_firstName');
+        var lastname = localStorage.getItem('user_lastName');
+        var email = localStorage.getItem('user_email');
+
+        //console.log(`Claiming ${itemType[1]} item ID: ${itemID}...`);
+        var obj = {
+            itemType: 'found',
+            UserId: uid,
+            FoundId: itemID,
+            firstname: firstname,
+            lastname: lastname,
+            email: email
         };
-        console.log(JSON.stringify(obj));
+
+        //console.log(JSON.stringify(obj));
         addNewItem(obj);
     };
 
@@ -227,9 +216,19 @@ $(document).ready(function () {
         });
     };
 
-
-    $('#claim-btn').on('click', function (event) {
+    $('.claim-btn-lost').on('click', function (event) {
+        console.log("enter claim lost claim");
         event.preventDefault();
-        claimItem();
+        var lost_itemID = $(this).val();
+        console.log("itemid in lost: "+lost_itemID);
+        claimItemLost(lost_itemID);
+    });
+
+    $('.claim-btn-found').on('click', function (event) {
+        console.log("enter claim found claim");
+        event.preventDefault();
+       var found_itemID = $(this).val();
+        console.log("itemid in found: "+found_itemID);
+        claimItemFound(found_itemID);
     });
 });
