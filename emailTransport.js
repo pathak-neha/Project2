@@ -4,10 +4,12 @@ var nodemailer = require('nodemailer');
 var newAuth = require("./emailAuth.js");
 
 var emailAuth = newAuth.auth;
-console.log(emailAuth);
 
 var transporter = nodemailer.createTransport({
-    service: 'gmail',
+    name: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: emailAuth
   });
   

@@ -11,7 +11,7 @@ function emailEntryBlurEvent() {
    
     var signEmail = $('#exampleDropdownFormEmail1').val().trim().toLowerCase();
     if (signEmail.trim() === '') {
-      $('#email-enter-error').text("Email canot be blank, Please ReEnter");
+      $('#email-enter-error').text("Email cannot be blank");
       $('#exampleDropdownFormEmail1').focus();
     }
     else {
@@ -29,7 +29,7 @@ function emailEntryBlurEvent() {
           $('#exampleDropdownFormPassword1').focus();
         }
         else {
-          $('#email-enter-error').text('Email is not found in existing Users, Please ReEnter');
+          $('#email-enter-error').text('Email does not exist');
           $('#exampleDropdownFormEmail1').focus();
         }
       }
@@ -51,13 +51,13 @@ function clickSingInButtonListener() {
 
     if (signEmail.trim() === '') {
       validated = false;
-      $('#email-enter-error').text("Email can not be blank, Please ReEnter");
+      $('#email-enter-error').text("Email cannot be blank");
       $('#exampleDropdownFormEmail1').focus();
     }
     
     if (signPass.trim() === '') {
       validated = false;
-      $('#pass-enter-error').text("Password can not be blank, Please ReEnter");
+      $('#pass-enter-error').text("Password cannot be blank");
       $('#exampleDropdownFormPassword1').focus();
     }
     
@@ -98,7 +98,7 @@ function emailSignUpEntryBlurEvent() {
     console.log('enter emailEntryBlurEvent');
     var signEmail = $('#exampleDropdownFormEmail3').val().trim().toLowerCase();
     if (signEmail.trim() === '') {
-      $('#email-enter-error').text("Email canot be blank, Please ReEnter");
+      $('#email-enter-error').text("Email cannot be blank ");
       $('#exampleDropdownFormEmail3').focus();
     }
     else {
@@ -113,7 +113,7 @@ function emailSignUpEntryBlurEvent() {
         data: emailToValidate
       }).then(function (res) {
         if (res.validate) {
-          $('#email-enter-error').text('Email already exists, Please ReEnter');
+          $('#email-enter-error').text('Email already exists ');
           $('#exampleDropdownFormEmail3').focus();
         }
         else {
@@ -139,30 +139,30 @@ function clickSingupButtonListener() {
 
     if (signFirst.trim() === '') {
       validated = false;
-      $('#first-enter-error').text("First Name can not be blank, Please ReEnter");
+      $('#first-enter-error').text("First Name  cannot be blank ");
       $('#exampleDropdownFormFirst').focus();
     }
 
-    if (signLast.trim() === '') {
+    if (signLast.trim() === ''|| signLast.trim().length<3) {
       validated = false;
-      $('#last-enter-error').text("Last Name can not be blank, Please ReEnter");
+      $('#last-enter-error').text("Last Name cannot be blank or require minimum 3 characters ");
       $('#exampleDropdownFormLast').focus();
     }
 
     if (signEmail.trim() === '') {
       validated = false;
-      $('#email-enter-error').text("Email can not be blank, Please ReEnter");
+      $('#email-enter-error').text("Email  cannot be blank ");
       $('#exampleDropdownFormEmail3').focus();
     }
     
     if (signPass.trim() === '') {
       validated = false;
-      $('#pass-enter-error').text("Password can not be blank, Please ReEnter");
+      $('#pass-enter-error').text("Password cannot be blank");
       $('#exampleDropdownFormPassword4').focus();
     }
     if (signPass.trim().length < 6) {
       validated = false;
-      $('#pass-enter-error').text("Password should be minimum 6 characters long, Please ReEnter");
+      $('#pass-enter-error').text("Password should be minimum 6 characters long ");
       $('#exampleDropdownFormPassword4').focus();
     }
     // Send the login posts
@@ -203,14 +203,4 @@ function clickSingupButtonListener() {
 }
 
 
-// $.ajax('/api/posts/', {
-//   type: 'POST',
-//   beforeSend: function (xhr) {
-//     /* Authorization header */
-//     xhr.setRequestHeader("Authorization", "Basic " + localStorage.getItem('session_token'));
-//   },
-// }).then(function (res) {
-//   console.log(res);
 
-// }
-// );

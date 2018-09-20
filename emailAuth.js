@@ -1,4 +1,4 @@
 exports.auth = {
-  user: process.env.email_user,
-  pass: process.env.email_password
+  user: process.env.EMAIL_USER,
+  pass: process.env.EMAIL_PASSWORD
 };

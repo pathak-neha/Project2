@@ -68,9 +68,9 @@ label {
     font-weight: 100;
 }
 
-.notSignedMessage, #welcomUser {
-    font-weight: 500;
-    font-size: 20px;
+.notSignedMessage, #welcomUser, #email-enter-error, #pass-enter-error {
+    font-weight: 250;
+    font-size: 20px; 
     color: white;
 }
 

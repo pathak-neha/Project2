@@ -2,6 +2,9 @@
   "name": "project2-lostandfound",
   "version": "1.0.0",
   "description": "Lost and Found App - Project 2 - UofT coding Bootcamp",
+  "engines": {
+    "node": "9"
+  },
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -18,11 +21,6 @@
   "bugs": {
     "url": "https://github.com/aboozarmojdeh/Project2-LostAndFound/issues"
   },
-  
-    "engines": { 
-        "node": "8.11.3" 
-     },
-  
   "homepage": "https://github.com/aboozarmojdeh/Project2-LostAndFound#readme",
   "dependencies": {
     "bcrypt": "^3.0.0",

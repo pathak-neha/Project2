@@ -32,7 +32,7 @@ function loadUserInfo() {
   }
   if (localStorage.session_token) {
     if (localStorage.user_welcome) {
-      $('#welcomUser').text(localStorage.getItem("user_welcome"));
+      $('#welcomUser').html('<b>'+localStorage.getItem("user_welcome")+'</b>');
     }
     $('#firstName').val(localStorage.getItem("user_firstName"));
     console.log(localStorage.getItem("user_lastName"));
@@ -40,11 +40,14 @@ function loadUserInfo() {
     $('#exampleFormControlInput1').val(localStorage.getItem("user_email"));
 
   } else {
-   
-    $('#welcomUser').text('Please SignIn or SignUp to continue ');
-    $('.notSignedMessage').text('Please SignIn or SignUp if you are new around here');
+
+    $('#welcomUser').html('<b>Please <a href=/signin>sign in</a> or <a href=/signup> sign up</a> to continue</b>');
+
+    //$('.notSignedMessage').html('Please sign in or sign up if you are new around here');
+    $('.notSignedMessage').html('<b>Please <a href=/signin>sign in</a> or  <a href=/signup> sign up</a> if you are new around here</b>');
+
     if (document.getElementById('enterFoundItems') !== null) {
-      document.getElementById('enterFoundItems').disabled = true;
+      document.getElementById('enterFoundItems').disabled = true; s
     }
     if (document.getElementById('enterLostItems') !== null) {
       document.getElementById('enterLostItems').disabled = true;
@@ -53,6 +56,6 @@ function loadUserInfo() {
       document.getElementById('searchBtn').disabled = true;
     }
 
-    
+
   }
 };
