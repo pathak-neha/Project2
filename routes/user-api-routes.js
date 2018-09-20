@@ -97,7 +97,7 @@ router.post('/api/userpost', (req, res) => {
             }
             
             var user = dbUser.username;
-            jwt.sign({ user }, 'secretkey', { expiresIn: '60s' }, (err, token) => {
+            jwt.sign({ user }, 'secretkey', { expiresIn: '300s' }, (err, token) => {
                 console.log("token: " + token);
                 res.json({
                     validate: true,

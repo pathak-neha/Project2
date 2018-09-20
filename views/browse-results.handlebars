@@ -47,6 +47,7 @@
         <hr>
       </div>
       </div>
+        <div class='notSignedMessage'></div>
         <div>
             <form id="searchEntry">
                 <div class='input-group mb-3'>
@@ -146,7 +147,7 @@
         <td>{{this.location}}</td>
         <td>{{this.description}}</td>
         <td>
-            <button id="claim-btn" value="{{this.id}}" type="submit">I Found This</button>
+            <button id="claim-btn-ls" class = "claim-btn-lost" value="{{this.id}}" type="submit">I Found This</button>
         </td>
     </tr>
     {{/each}}
@@ -176,7 +177,7 @@
         <td>{{this.location}}</td>
         <td>{{this.description}}</td>
         <td>
-            <button id="claim-btn" value="{{this.id}}" type="submit">This is Mine</button>
+            <button id="claim-btn-fn"  class = "claim-btn-found"  value="{{this.id}}" type="submit">This is Mine</button>
         </td>
     </tr>
     {{/each}}
