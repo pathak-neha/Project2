@@ -94,18 +94,18 @@ router.post('/api/lost', function (req, res) {
   })
 });
 
-router.put('/api/lost/:id', function (req, res) {
-  db.Lost.update({
-    claimed: true,
-  }, {
-      where: {
-        id: req.body.id
-      }
-    }).then(function (results) {
-      res.json(results)
-      res.end();
-    })
-});
+// router.put('/api/lost/:id', function (req, res) {
+//   db.Lost.update({
+//     claimed: true,
+//   }, {
+//       where: {
+//         id: req.body.id
+//       }
+//     }).then(function (results) {
+//       res.json(results)
+//       res.end();
+//     })
+// });
 
 // ---------- ROUTES FOR 'FOUND' TABLE 
 router.get('/found', function (req, res) {
@@ -133,31 +133,70 @@ router.post('/api/found', function (req, res) {
   })
 });
 
-router.put('/api/found/:id', function (req, res) {
-  db.Found.update({
-    claimed: true,
-  }, {
-      where: {
-        id: req.body.id
-      }
-    }).then(function (results) {
-      res.json(results)
-      res.end();
-    })
-});
+// router.put('/api/found/:id', function (req, res) {
+//   db.Found.update({
+//     claimed: true,
+//   }, {
+//       where: {
+//         id: req.body.id
+//       }
+//     }).then(function (results) {
+//       res.json(results)
+//       res.end();
+//     })
+// });
 
-// TO INPUT A CLAIM
-router.post('/api/claim', function (req, res) {
-  db.Claim.create(req.body).then(function (results) {
+// TO INPUT A CLAIM FOR FOUND ITEM 
+router.post('/api/claim/found', function (req, res) {
+  var claimQuery = req.body;
+  console.log("claimQuery: " + JSON.stringify(claimQuery));
+  db.Claim.create(req.body)
+  .then(function (results) {
     try {
       sendClaimEnteredEmailToUser(req.body.email, req.body.firstname, req.body.lastname, results.id);
       var user = dbUser.username;
     } catch (err) {
       console.log("error sending Lost Confirmation to user: " + err);
     }
-    res.json(results)
+    // res.json(results)
+    db.Found.update({
+      claimed: true
+    }, {
+        where: {
+          id: claimQuery.FoundId
+        }
+      }).then(function (data) {
+        res.json(data)
+        res.end();
+      })
   });
 });
+
+// TO INPUT A CLAIM FOR LOST ITEM 
+router.post('/api/claim/lost', function (req, res) {
+  var claimQuery = req.body;
+  console.log("claimQuery: " + JSON.stringify(claimQuery));
+  db.Claim.create(req.body)
+  .then(function (results) {
+    try {
+      sendClaimEnteredEmailToUser(req.body.email, req.body.firstname, req.body.lastname, results.id);
+      var user = dbUser.username;
+    } catch (err) {
+      console.log("error sending Lost Confirmation to user: " + err);
+    }
+    db.Lost.update({
+      claimed: true
+    }, {
+        where: {
+          id: claimQuery.LostId
+        }
+      }).then(function (data) {
+        res.json(data)
+        res.end();
+      })
+  });
+});
+
 
 // SEND CONFIRMATION EMAILS FOR LOST, FOUND AND CLAIMS
 function sendLostEnteredEmailToUser(email, firstName, lastname, itemID) {
