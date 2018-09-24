@@ -10,7 +10,7 @@ var path = require('path');
 // =============================================================
 var express = require('express');
 var router = express.Router();
-var db = require('../models')
+var db = require('../models');
 // Import the model to use its database functions.
 var lost = require('../models/lost.js');
 var found = require('../models/found.js');
@@ -27,14 +27,14 @@ router.get('/', function (req, res) {
       ['id', 'DESC']
     ]
   }).then(function(data) {
-    console.log("Lost Data: " + JSON.stringify(data[0]));
+    console.log('Lost Data: ' + JSON.stringify(data[0]));
     db.Found.findAll({
       order: [
         ['id', 'DESC']
       ]
     }).then(function(result) {
-      console.log("Found Data: " + JSON.stringify(result[0]));
-    res.render('home', {largestLostDiv: data[0], largestFoundDiv: result[0]});
+      console.log('Found Data: ' + JSON.stringify(result[0]));
+      res.render('home', {largestLostDiv: data[0], largestFoundDiv: result[0]});
     });
   });
 });
@@ -48,36 +48,36 @@ router.get('/index', function (req, res) {
       ['id', 'DESC']
     ]
   }).then(function(data) {
-    console.log("Lost Data: " + JSON.stringify(data[0]));
+    console.log('Lost Data: ' + JSON.stringify(data[0]));
     db.Found.findAll({
       order: [
         ['id', 'DESC']
       ]
     }).then(function(result) {
-      console.log("Found Data: " + JSON.stringify(result[0]));
-    res.render('home', {largestLostDiv: data[0], largestFoundDiv: result[0]});
+      console.log('Found Data: ' + JSON.stringify(result[0]));
+      res.render('home', {largestLostDiv: data[0], largestFoundDiv: result[0]});
     });
   });
 });
 
 router.get('/found', function (req, res) {
-  res.render('found')
+  res.render('found');
 });
 
 router.get('/lost', function (req, res) {
-  res.render('lost')
+  res.render('lost');
 });
 
 router.get('/browse-items', function (req, res) {
-  res.render('browse')
+  res.render('browse');
 });
 
 router.get('/SignIn', function (req, res) {
-  res.render('SignIn')
+  res.render('SignIn');
 });
 
 router.get('/SignUp', function (req, res) {
-  res.render('SignUp')
+  res.render('SignUp');
 });
 
 // router.get("*", function (req, res) {

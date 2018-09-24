@@ -1,4 +1,4 @@
-var transport = require("./emailTransport.js");
+var transport = require('./emailTransport.js');
 
 function SendEmail(toEmail,subject,emailBody){
   var mailOptions = {
