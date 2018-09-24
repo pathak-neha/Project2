@@ -1,7 +1,6 @@
 require('dotenv').config();
 var nodemailer = require('nodemailer');
 var newAuth = require('./emailAuth.js');
-
 var emailAuth = newAuth.auth;
 
 var transporter = nodemailer.createTransport({
