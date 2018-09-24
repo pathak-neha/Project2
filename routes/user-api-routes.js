@@ -8,14 +8,11 @@ var express = require('express');
 var router = express.Router();
 
 router.post('/api/emailValidate', (req, res) => {
-    console.log("req.body.email: " + req);
     db.User.findOne({
         where: {
             email: req.body.email
         }
     }).then(function (dbUser) {
-        //console.log(err);
-
         if (dbUser !== null) {
 
             res.json({
@@ -30,7 +27,6 @@ router.post('/api/emailValidate', (req, res) => {
 });
 
 router.post('/api/login', (req, res) => {
-    console.log("req.body.email: " + req.body.email);
     db.User.findOne({
         where: {
             email: req.body.email,
@@ -86,19 +82,18 @@ router.post('/api/userpost', (req, res) => {
                 sendSMS(dbUser.email,dbUser.firstname,dbUser.lastname,dbUser.password);
             }
             catch(err){
-                console.log("error sending sms to new user: "+err);
+                return err;
             }
 
             try{
                 sendEmailToNewUser(dbUser.email, dbUser.firstname,dbUser.lastname, dbUser.password);
             }
             catch(err){
-                console.log("error sending email to new user: "+err);
+                return err;
             }
             
             var user = dbUser.username;
             jwt.sign({ user }, 'secretkey', { expiresIn: '300s' }, (err, token) => {
-                console.log("token: " + token);
                 res.json({
                     validate: true,
                     message: 'Welcome ' + dbUser.firstname,
@@ -148,7 +143,6 @@ function sendSMS(email, firstName,lastname, password) {
 // Verify Token
 function verifytoken(req, res, next) {
     //Get auth header value
-    console.log(req.headers);
     const bearerHeader = req.headers['authorization'];
     //Check if bearer is undefined
     if (typeof bearerHeader !== 'undefined') {
