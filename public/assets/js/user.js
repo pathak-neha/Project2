@@ -46,9 +46,7 @@ function clickSingInButtonListener() {
 
     var signEmail = $('#exampleDropdownFormEmail1').val().trim().toLowerCase();
     var signPass = $('#exampleDropdownFormPassword1').val().trim();
-    console.log('user: ' + signEmail);
-    console.log('pass: ' + signPass);
-
+    
     if (signEmail.trim() === '') {
       validated = false;
       $('#email-enter-error').text('Email cannot be blank');
@@ -74,7 +72,6 @@ function clickSingInButtonListener() {
         data: newUser
       }).then(function (res) {
         if (res.validate) {
-          console.log('token: ' + res.token);
           localStorage.setItem('session_token', res.token);
           localStorage.setItem('user_welcome', res.message);
           localStorage.setItem('user_id', res.id);
@@ -95,7 +92,6 @@ function clickSingInButtonListener() {
 function emailSignUpEntryBlurEvent() {
   $('#exampleDropdownFormEmail3').on('blur', function (event) {
     event.preventDefault();
-    console.log('enter emailEntryBlurEvent');
     var signEmail = $('#exampleDropdownFormEmail3').val().trim().toLowerCase();
     if (signEmail.trim() === '') {
       $('#email-enter-error').text('Email cannot be blank ');
@@ -130,7 +126,6 @@ function emailSignUpEntryBlurEvent() {
 function clickSingupButtonListener() {
   $('#signUpButton').on('click', function (event) {
     event.preventDefault();
-    console.log('enter clickSingUpButtonListenercc');
     var signFirst = $('#exampleDropdownFormFirst').val().trim();
     var signLast = $('#exampleDropdownFormLast').val().trim();
     var signEmail = $('#exampleDropdownFormEmail3').val().trim().toLowerCase();
@@ -182,8 +177,6 @@ function clickSingupButtonListener() {
         data: newUser
       }).then(function (res) {
         if (res.validate) {
-
-          console.log('token: ' + res.validate);
           localStorage.setItem('session_token', res.token);
           localStorage.setItem('user_welcome', res.message);
           localStorage.setItem('user_id', res.id);

@@ -27,13 +27,11 @@ router.get('/', function (req, res) {
       ['id', 'DESC']
     ]
   }).then(function(data) {
-    console.log('Lost Data: ' + JSON.stringify(data[0]));
     db.Found.findAll({
       order: [
         ['id', 'DESC']
       ]
     }).then(function(result) {
-      console.log('Found Data: ' + JSON.stringify(result[0]));
       res.render('home', {largestLostDiv: data[0], largestFoundDiv: result[0]});
     });
   });
@@ -48,13 +46,11 @@ router.get('/index', function (req, res) {
       ['id', 'DESC']
     ]
   }).then(function(data) {
-    console.log('Lost Data: ' + JSON.stringify(data[0]));
     db.Found.findAll({
       order: [
         ['id', 'DESC']
       ]
     }).then(function(result) {
-      console.log('Found Data: ' + JSON.stringify(result[0]));
       res.render('home', {largestLostDiv: data[0], largestFoundDiv: result[0]});
     });
   });

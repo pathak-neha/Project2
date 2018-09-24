@@ -19,6 +19,7 @@
     "database": "fddlz4nyw8rhsubq",
     "port": 3306,
     "host": "m7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }

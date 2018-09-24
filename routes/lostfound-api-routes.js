@@ -15,10 +15,7 @@ var globalData;
 var idData = [];
 var idQuery;
 
-// Create all our routes and set up logic within those routes where required.
 // ---------- ROUTES FOR 'LOST' TABLE 
-
-
 router.get('/browse-by-id', function (req, res) {
   idQuery = req.query;
   db.Lost.findAll({
@@ -88,24 +85,11 @@ router.post('/api/lost', function (req, res) {
       sendLostEnteredEmailToUser(req.body.email, req.body.firstname, req.body.lastname, results.id);
       var user = dbUser.username;
     } catch (err) {
-      console.log(err);
+      return err;
     }
     res.json(results);
   });
 });
-
-// router.put('/api/lost/:id', function (req, res) {
-//   db.Lost.update({
-//     claimed: true,
-//   }, {
-//       where: {
-//         id: req.body.id
-//       }
-//     }).then(function (results) {
-//       res.json(results)
-//       res.end();
-//     })
-// });
 
 // ---------- ROUTES FOR 'FOUND' TABLE 
 router.get('/found', function (req, res) {
@@ -127,36 +111,22 @@ router.post('/api/found', function (req, res) {
       sendFoundEnteredEmailToUser(req.body.email, req.body.firstname, req.body.lastname, foundId);
       var user = dbUser.username;
     } catch (err) {
-      console.log('error sending Found Confirmation to user: ' + err);
+      return err;
     }
     res.json(results);
   });
 });
 
-// router.put('/api/found/:id', function (req, res) {
-//   db.Found.update({
-//     claimed: true,
-//   }, {
-//       where: {
-//         id: req.body.id
-//       }
-//     }).then(function (results) {
-//       res.json(results)
-//       res.end();
-//     })
-// });
-
 // TO INPUT A CLAIM FOR FOUND ITEM 
 router.post('/api/claim/found', function (req, res) {
   var claimQuery = req.body;
-  console.log('claimQuery: ' + JSON.stringify(claimQuery));
   db.Claim.create(req.body)
     .then(function (results) {
       try {
         sendClaimEnteredEmailToUser(req.body.email, req.body.firstname, req.body.lastname, results.id);
         var user = dbUser.username;
       } catch (err) {
-        console.log('error sending Lost Confirmation to user: ' + err);
+        return err;
       }
       // res.json(results)
       db.Found.update({

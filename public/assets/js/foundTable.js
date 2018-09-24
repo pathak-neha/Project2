@@ -41,7 +41,6 @@ $(document).ready(function () {
           lastname: lastname,
           email: email
         };
-        console.log('Adding... '+JSON.stringify(obj)+' to the Found Items table');
         addNewItem(obj);
       }
     }
@@ -52,7 +51,6 @@ $(document).ready(function () {
       type: 'POST',
       data: data
     }).then(function (res) {
-      console.log('done');
       location.replace('/');
       location.replace('/browse-items');
     });
