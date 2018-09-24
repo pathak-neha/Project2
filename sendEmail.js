@@ -10,9 +10,9 @@ function SendEmail(toEmail,subject,emailBody){
   
   this.sendMail = transport.sendMail(mailOptions, function(error, info){
     if (error) {
-      console.log(error);
+      return error;
     } else {
-      console.log('Email sent: ' + info.response);
+      return info.response;
     }
   });
 }
